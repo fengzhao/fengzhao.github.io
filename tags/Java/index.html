@@ -423,9 +423,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2017/11/12/annotation/" itemprop="url">
+            <a class="post-title-link" href="/2017/11/12/javat-ype/" itemprop="url">
               
-                <span itemprop="name">Java注解</span>
+                <span itemprop="name">Java类型信息和反射</span>
               
             </a>
         
@@ -451,9 +451,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2017/11/12/javat-ype/" itemprop="url">
+            <a class="post-title-link" href="/2017/11/12/annotation/" itemprop="url">
               
-                <span itemprop="name">Java类型信息和反射</span>
+                <span itemprop="name">Java注解</span>
               
             </a>
         
@@ -787,14 +787,6 @@
 
   
 
-  
-    <script id="dsq-count-scr" src="https://fengzhaoblog.disqus.com/count.js" async></script>
-  
-
-  
-
-
-
 
 
 	
@@ -809,10 +801,38 @@
 
 
 
+  
 
 
 
 
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'BwxqSXF3w8CgCyiPjKW1mtcc-gzGzoHsz',
+        appKey: 'YlE7aA93xTzHq7HWdnWslAJK',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

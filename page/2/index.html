@@ -468,8 +468,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2016/10/04/2016-10-4-factorypattern/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/10/04/2016-10-4-factorypattern/" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2016/10/04/2016-10-4-factorypattern/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -635,8 +634,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2016/09/25/singleton/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/09/25/singleton/" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2016/09/25/singleton/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1023,14 +1021,6 @@
 
   
 
-  
-    <script id="dsq-count-scr" src="https://fengzhaoblog.disqus.com/count.js" async></script>
-  
-
-  
-
-
-
 
 
 	
@@ -1045,10 +1035,38 @@
 
 
 
+  
 
 
 
 
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'BwxqSXF3w8CgCyiPjKW1mtcc-gzGzoHsz',
+        appKey: 'YlE7aA93xTzHq7HWdnWslAJK',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
