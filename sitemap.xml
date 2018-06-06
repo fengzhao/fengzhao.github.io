@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://fengzhao.me/about/index.html</loc>
+    
+    <lastmod>2018-06-06T04:49:00.501Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://fengzhao.me/2018/06/04/%E6%B5%85%E8%B0%88MySQL%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</loc>
     
     <lastmod>2018-06-04T05:45:20.508Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>https://fengzhao.me/2018/05/10/DataBaseTransaction/</loc>
     
     <lastmod>2018-05-18T12:21:40.940Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://fengzhao.me/about/index.html</loc>
-    
-    <lastmod>2018-05-10T10:30:00.425Z</lastmod>
     
   </url>
   
