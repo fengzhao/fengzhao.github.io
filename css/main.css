@@ -1932,7 +1932,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #e0a7cb;
+  background: #52ff0b;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3096,7 +3096,6 @@ ul.breadcrumb li+li:last-child {
 ::-webkit-scrollbar-button:start {
   width: 10px;
   height: 10px;
-  background: url("../images/scrollbar_arrow.png") no-repeat 0 0;
 }
 ::-webkit-scrollbar-button:start:hover {
   background: url("../images/scrollbar_arrow.png") no-repeat -15px 0;
@@ -3107,11 +3106,4 @@ ul.breadcrumb li+li:last-child {
 ::-webkit-scrollbar-button:end {
   width: 10px;
   height: 10px;
-  background: url("../images/scrollbar_arrow.png") no-repeat 0 -18px;
-}
-::-webkit-scrollbar-button:end:hover {
-  background: url("../images/scrollbar_arrow.png") no-repeat -15px -18px;
-}
-::-webkit-scrollbar-button:end:active {
-  background: url("../images/scrollbar_arrow.png") no-repeat -30px -18px;
 }
