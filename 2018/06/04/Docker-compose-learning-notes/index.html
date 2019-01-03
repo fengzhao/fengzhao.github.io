@@ -123,18 +123,18 @@
 
 
 
-  <meta name="description" content="MySQL日志文件系统日志是mysql数据库的重要组成部分。日志文件中记录着mysql数据库运行期间发生的变化；也就是说用来记录mysql数据库的客户端连接状况、SQL语句的执行情况和错误信息等。当数据库遭到意外的损坏时，可以通过日志查看文件出错的原因，并且可以通过日志文件进行数据恢复。 MySQL日志分类MySQL日志大致可以分为一下几种类型：">
-<meta name="keywords" content="MySQL">
+  <meta name="description" content="简介docker-compose 是一个定义和运行多个 docker 容器实例的工具。它使用一个 docker-compose.yml（yaml格式）来定义一组关联的容器应用为一个项目（porject）。通过一个简单的命令，可以创建启动yml中配置的多个容器。它可以在所有的环境中使用，包括生产，开发，测试，持续集成环境。 docker-compose中有两个重要概念：  服务（service）：一">
+<meta name="keywords" content="Docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅谈MySQL日志文件系统">
-<meta property="og:url" content="https://fengzhao.me/2018/06/04/浅谈MySQL日志文件系统/index.html">
+<meta property="og:title" content="Docker-compose简明教程">
+<meta property="og:url" content="https://fengzhao.me/2018/06/04/Docker-compose-learning-notes/index.html">
 <meta property="og:site_name" content="FengZhao&#39;s Blog">
-<meta property="og:description" content="MySQL日志文件系统日志是mysql数据库的重要组成部分。日志文件中记录着mysql数据库运行期间发生的变化；也就是说用来记录mysql数据库的客户端连接状况、SQL语句的执行情况和错误信息等。当数据库遭到意外的损坏时，可以通过日志查看文件出错的原因，并且可以通过日志文件进行数据恢复。 MySQL日志分类MySQL日志大致可以分为一下几种类型：">
+<meta property="og:description" content="简介docker-compose 是一个定义和运行多个 docker 容器实例的工具。它使用一个 docker-compose.yml（yaml格式）来定义一组关联的容器应用为一个项目（porject）。通过一个简单的命令，可以创建启动yml中配置的多个容器。它可以在所有的环境中使用，包括生产，开发，测试，持续集成环境。 docker-compose中有两个重要概念：  服务（service）：一">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-30T16:43:14.321Z">
+<meta property="og:updated_time" content="2019-01-03T15:01:00.897Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浅谈MySQL日志文件系统">
-<meta name="twitter:description" content="MySQL日志文件系统日志是mysql数据库的重要组成部分。日志文件中记录着mysql数据库运行期间发生的变化；也就是说用来记录mysql数据库的客户端连接状况、SQL语句的执行情况和错误信息等。当数据库遭到意外的损坏时，可以通过日志查看文件出错的原因，并且可以通过日志文件进行数据恢复。 MySQL日志分类MySQL日志大致可以分为一下几种类型：">
+<meta name="twitter:title" content="Docker-compose简明教程">
+<meta name="twitter:description" content="简介docker-compose 是一个定义和运行多个 docker 容器实例的工具。它使用一个 docker-compose.yml（yaml格式）来定义一组关联的容器应用为一个项目（porject）。通过一个简单的命令，可以创建启动yml中配置的多个容器。它可以在所有的环境中使用，包括生产，开发，测试，持续集成环境。 docker-compose中有两个重要概念：  服务（service）：一">
 
 
 
@@ -143,7 +143,7 @@
 
 
 
-  <link rel="canonical" href="https://fengzhao.me/2018/06/04/浅谈MySQL日志文件系统/"/>
+  <link rel="canonical" href="https://fengzhao.me/2018/06/04/Docker-compose-learning-notes/"/>
 
 
 
@@ -153,7 +153,7 @@
   };
 </script>
 
-  <title>浅谈MySQL日志文件系统 | FengZhao's Blog</title>
+  <title>Docker-compose简明教程 | FengZhao's Blog</title>
   
 
 
@@ -390,7 +390,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fengzhao.me/2018/06/04/浅谈MySQL日志文件系统/">
+    <link itemprop="mainEntityOfPage" href="https://fengzhao.me/2018/06/04/Docker-compose-learning-notes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fengzhao">
@@ -407,7 +407,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">浅谈MySQL日志文件系统
+          <h1 class="post-title" itemprop="name headline">Docker-compose简明教程
               
             
           </h1>
@@ -449,7 +449,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-31 00:43:14" itemprop="dateModified" datetime="2018-10-31T00:43:14+08:00">2018-10-31</time>
+                <time title="修改时间：2019-01-03 23:01:00" itemprop="dateModified" datetime="2019-01-03T23:01:00+08:00">2019-01-03</time>
               
             
           </span>
@@ -463,8 +463,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/06/04/浅谈MySQL日志文件系统/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/06/04/浅谈MySQL日志文件系统/" itemprop="commentCount"></span>
+                <a href="/2018/06/04/Docker-compose-learning-notes/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/06/04/Docker-compose-learning-notes/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -500,315 +500,47 @@
       
 
       
-        <h1 id="MySQL日志文件系统"><a href="#MySQL日志文件系统" class="headerlink" title="MySQL日志文件系统"></a>MySQL日志文件系统</h1><p>日志是mysql数据库的重要组成部分。日志文件中记录着mysql数据库运行期间发生的变化；也就是说用来记录mysql数据库的客户端连接状况、SQL语句的执行情况和错误信息等。当数据库遭到意外的损坏时，可以通过日志查看文件出错的原因，并且可以通过日志文件进行数据恢复。</p>
-<h1 id="MySQL日志分类"><a href="#MySQL日志分类" class="headerlink" title="MySQL日志分类"></a>MySQL日志分类</h1><p>MySQL日志大致可以分为一下几种类型：</p>
-<a id="more"></a>
-<table>
-<thead>
-<tr>
-<th>日志类型</th>
-<th>日志作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>错误日志</td>
-<td>记录启动、运行或停止mysqld时出现的问题。</td>
-</tr>
-<tr>
-<td>通用查询日志</td>
-<td>记录建立的客户端连接和执行的语句。</td>
-</tr>
-<tr>
-<td>二进制日志</td>
-<td>记录所有更改数据的语句。还用于复制。</td>
-</tr>
-<tr>
-<td>中继日志</td>
-<td>只有主从复制的slave服务器才会有，记录的是来自主服务器的数据变化；</td>
-</tr>
-<tr>
-<td>慢查询日志</td>
-<td>记录所有执行时间超过long_query_time秒的所有查询或不使用索引的查询。</td>
-</tr>
-<tr>
-<td>DDL日志</td>
-<td>也叫元数据日志，记录的是通过DDL进行的元数据操作；</td>
-</tr>
-</tbody>
-</table>
-<h1 id="错误日志"><a href="#错误日志" class="headerlink" title="错误日志"></a>错误日志</h1><p>MySQL的错误日志，默认是开启并无法关闭，一般存放在在数据目录中，以主机名.err格式命名，也可以用 可以用–log-error[=file_name]选项来开启mysql错误日志，该选项指定mysqld保存错误日志文件的位置。错误日志一般是文本文件，可以直接tail打开进行分析查看。</p>
-<p>错误日志不仅仅记录着错误信息，它记录的事件有：</p>
+        <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>docker-compose 是一个定义和运行多个 docker 容器实例的工具。它使用一个 docker-compose.yml（yaml格式）来定义一组关联的容器应用为一个项目（porject）。通过一个简单的命令，可以创建启动yml中配置的多个容器。它可以在所有的环境中使用，包括生产，开发，测试，持续集成环境。</p>
+<p>docker-compose中有两个重要概念：</p>
 <ul>
-<li>服务器启动和关闭过程中的信息</li>
-<li>服务器运行过程中的错误信息</li>
-<li>事件调度器运行一个事件时产生的信息</li>
-<li>(如果被配置为从服务器)启动从服务器进程时产生的信息</li>
-</ul>
-<p>查看错误日志存放路径：</p>
-<pre>mysql> SHOW VARIABLES LIKE 'log_error%';
-+---------------+---------------------------------+
-| Variable_name | Value                           |
-+---------------+---------------------------------+
-| log_error     | /var/lib/mysql/iZ2319y43bmZ.err |
-+---------------+---------------------------------+
-1 row in set (0.00 sec)
-
-mysql> 
-</pre>
-
-
-
-
-<h1 id="通用查询日志"><a href="#通用查询日志" class="headerlink" title="通用查询日志"></a>通用查询日志</h1><p>通用查询日志记录了数据库执行的命令。而不仅仅只是select语句，当开启查询日志之后，数据库可能需要不停地写入查询日志，会增加很多磁盘I/O，所以除非是出于调试目的，一般不建议开启查询日志。</p>
-<p>如果需要可以手动开启。如果开启了查询日志，可以通过如下3种方式输出在查询日志</p>
-<ul>
-<li>将查询日志存放于指定的日志文件中。</li>
-<li>将查询日志存放于mysql.general_log表中。</li>
-<li>将查询日志同时存放于指定的日志文件与mysql库的general_log表中。</li>
-</ul>
-<p>查看通用查询日志相关信息：</p>
-<pre>
-mysql> show variables where variable_name like '%general_log%' or variable_name='log_output';
-+------------------+---------------------------------+
-| Variable_name    | Value                           |
-+------------------+---------------------------------+
-| general_log      | OFF                             |
-| general_log_file | /var/lib/mysql/iZ2319y43bmZ.log |
-| log_output       | FILE                            |
-+------------------+---------------------------------+
-3 rows in set (0.00 sec)
-</pre>
-
-<p>log_oupt可以log_output:表示当查询日志开启以后，以哪种方式存放，log_output可以设置为4种值，FILE、TABLE 、FILE,TABLE、NONE。</p>
-<p>此值为NONE时表示不记录查询日志，即使general_log设置为ON，如果log_output设置为NONE，也不会记录查询日志，其实，log_output不止控制用户查询日志的输出，慢查询日志的输出也是由此参数进行控制，也就是说，log_output设置为file，就表示查询日志和慢查询日志都存放到对应的文件中，设置为table，查询日志和慢查询日志就都存放在对应的数据库表中。</p>
-<h1 id="慢查询日志"><a href="#慢查询日志" class="headerlink" title="慢查询日志"></a>慢查询日志</h1><p>MySQL慢查询日志是MySQL提供的一种日志记录，用来记录执行时长超过指定时长的查询语句，具体指运行时间超过 long_query_time 值的 SQL 语句，则会被记录到慢查询日志中。</p>
-<p>long_query_time 默认值是 10 ，单位是 s，即默认是 10秒 。默认情况下，MySQL数据库并不会开启慢查询日志，需要手动设置这个参数。</p>
-<p>慢查询日志开销比较小，通过对慢查询的分析可以到系统的性能问题，找到相关的sql语句并进一步优化，因为或多或少都有一些性能开销，所以如果不是为了调优，一般建议不用开启。</p>
-<pre>
-mysql> SHOW VARIABLES LIKE 'slow_query_log%';
-+---------------------+--------------------------------------------------+
-| Variable_name       | Value                                            |
-+---------------------+--------------------------------------------------+
-| slow_query_log      | OFF                                              |
-| slow_query_log_file | /usr/local/var/mysql/upstreamdeMac-mini-slow.log |
-+---------------------+--------------------------------------------------+
-</pre>
-
-
-<h2 id="慢查询相关配置"><a href="#慢查询相关配置" class="headerlink" title="慢查询相关配置"></a>慢查询相关配置</h2><pre>
-# slow logging
-slow_query_log=1    //是否启用慢查询日志，[1 | 0] 或者 [ON | OFF]， MySQL 5.6以前此参数应该为log_slow_queries
-log-output=FILE   // 指定用文件存储或者用数据表存储，与通用查询日志共用这个参数，日志记录到系统的专用日志表中，要比记录到文件耗费更多的系统资源，因此对于需要启用慢查询日志，又需要能够获得更高的系统性能，那么建议优先记录到文件。
-
-slow_query_log_file  //指定文件存储路径和文件名，一般在数据目录下，默认是/var/lib/mysql/hostname-slow.log。
-
-long_query_time=10    //慢查的时长单位为秒，可以精确到小数点后6位(微秒)。
-log_queries_not_using_indexes  //没有使用到索引的语句，是否被记录到慢查询日志中。
-log_timestamps      //主要是控制 error log、genera log，等等记录日志的显示时间参数,默认时间戳是utc时间，与北京时间相差8h，一般我们会设置成SYSTEMd为操作系统时间。
-</pre>
-
-
-
-<h2 id="慢查询日志分析"><a href="#慢查询日志分析" class="headerlink" title="慢查询日志分析"></a>慢查询日志分析</h2><p>慢查询一般用下面两种工具来进行分析：</p>
-<h3 id="mysqldumpslow"><a href="#mysqldumpslow" class="headerlink" title="mysqldumpslow"></a>mysqldumpslow</h3><p>mysqldumpslow是官方自带的慢查询日志分析工具，用perl编写，可以用mysqldumpslow -h来看看具体用法。</p>
-<pre>
-[root@iZ2319y43bmZ ~]# mysqldumpslow  -h
-Option h requires an argument
-ERROR: bad option
-
-Usage: mysqldumpslow [ OPTS... ] [ LOGS... ]
-
-Parse and summarize the MySQL slow query log. Options are
-
-  --verbose    verbose
-  --debug      debug
-  --help       write this text to standard output
-
-  -v           verbose
-  -d           debug
-  -s ORDER     what to sort by (al, at, ar, c, l, r, t), 'at' is default
-​                al: average lock time
-​                ar: average rows sent
-​                at: average query time
-​                 c: count
-​                 l: lock time
-​                 r: rows sent
-​                 t: query time  
-  -r           reverse the sort order (largest last instead of first)
-  -t NUM       just show the top n queries
-  -a           don't abstract all numbers to N and strings to 'S'
-  -n NUM       abstract numbers with at least n digits within names
-  -g PATTERN   grep: only consider stmts that include this string
-  -h HOSTNAME  hostname of db server for *-slow.log filename (can be wildcard),
-​               default is '*', i.e. match all
-  -i NAME      name of server instance (if using mysql.server startup script)
-  -l           don't subtract lock time from total time
-
-[root@iZ2319y43bmZ ~]# 
-
-
-</pre>
-
-<p>主要参数：</p>
-<ul>
-<li>-v、–verbose : 在详细模式下运行，打印有关该程序的更多信息。</li>
-<li>-d、–debug : 在调试模式下运行。</li>
-<li>-s  [sort_type] : sort_type 是信息排序的依据<ul>
-<li>al：average lock time，按平均等待锁的时间排序</li>
-<li>ar：average rows sent，按平均发给客户端的行总数排序</li>
-<li>at：average query time，按平均查询时间排序</li>
-<li>c：count，按出现总次数排序</li>
-<li>l：lock time，按等待锁的时间排序</li>
-<li>r：rows sent，按扫描的行总数排序</li>
-<li>t：query time，按累计总耗费时间排序</li>
-</ul>
+<li><p>服务（service）：一个应用的容器，实际上可以包括若干运行相同镜像的容器实例。</p>
 </li>
-<li>-r ：倒序信息排序</li>
-<li>-t NUM ：只显示 top n 条查询</li>
-<li>-g PATTERN : 根据字符串筛选慢查询日志，可写正则匹配，大小写不敏感。</li>
-<li>-h HOSTNAME : 根据服务器名称选择慢查询日志</li>
-<li>-i NAME : 根据服务器 MySQL 实例名称选择慢查询日志</li>
-<li>-l : 不要将总时间减去锁定时间</li>
-</ul>
-<p>​    </p>
-<pre>
-[root@iZ2319y43bmZ mysql]# mysqldumpslow slowquery_2018052511.log
-
-Reading mysql slow query log from slowquery_2018052511.log
-Count: 1  Time=1.23s (3s)  Lock=0.00s (0s)  Rows=143.0 (143), doyd[doyd]@[119.145.8.228]
-  show full tables from `kpzs_v2` where table_type = 'S'
-
-[root@iZ2319y43bmZ mysql]# 
- </pre>
-
-<p>它主要统计慢查询语句的如下信息：</p>
-<ul>
-<li>出现次数(count)</li>
-<li>执行最长时间，耗费总时间</li>
-<li>等待锁的时间</li>
-<li>发送给客户端的行数</li>
-<li>执行该语句的客户端地址</li>
-<li>执行的原语句</li>
-</ul>
-<h3 id="percona-toolkit"><a href="#percona-toolkit" class="headerlink" title="percona-toolkit"></a>percona-toolkit</h3><p>percona-toolkit 是一组高级命令行工具的集合，用prel语言编写，需要自行手工安装，安装可以参考<a href="https://www.percona.com/doc/percona-toolkit/LATEST/index.html" target="_blank" rel="noopener">官网文档</a>，用来执行各种通过手工执行非常复杂和麻烦的 mysql 和系统任务。percona-toolkit中关于慢查询，主要是pt-query-digest 这个工具，这个工具可以把分析结果输出到表中，做慢查询监控时，可以考虑写脚本去分析慢查询并将结果输出到监控库，设置脚本定期执行即可。如果想直接定位分析，一般pt-query-digest  slowquery_yyyymmddhh.log即可</p>
-<p>用法：</p>
-<pre>
-pt-query-digest [OPTIONS] [FILES] [DSN]
-</pre>
-
-<p>参数说明：</p>
-<ul>
-<li>–create-review-table : 当使用–review参数把分析结果输出到表中时，如果没有表就自动创建。</li>
-<li>–create-history-table : 当使用–history参数把分析结果输出到表中时，如果没有表就自动创建。</li>
-<li>–filter : 对输入的慢查询按指定的字符串进行匹配过滤后再进行分析</li>
-<li>–limit : 限制输出结果百分比或数量，默认值是20,即将最慢的20条语句输出，如果是50%则按总响应时间占比从大到小排序，输出到总和达到50%位置截止。</li>
-<li>–host : mysql服务器地址</li>
-<li>–user : mysql用户名</li>
-<li>-password : mysql用户密码</li>
-<li>–history : 将分析结果保存到表中，分析结果比较详细，下次再使用–history时，如果存在相同的语句，且查询所在的时间区间和历史表中的不同，则会记录到数据表中，可以通过查询同一CHECKSUM来比较某类型查询的历史变化。</li>
-<li>–review : 将分析结果保存到表中，这个分析只是对查询条件进行参数化，一个类型的查询一条记录，比较简单。当下次使用–review时，如果存在相同的语句分析，就不会记录到数据表中。</li>
-<li>–output : 分析结果输出类型，值可以是report(标准分析报告)、slowlog(Mysql slow log)、json、json-anon，一般使用report，以便于阅读。</li>
-<li>–since : 从什么时间开始分析，值为字符串，可以是指定的某个 “yyyy-mm-dd [hh:mm:ss]” 格式的时间点，也可以是简单的一个时间值：s(秒)、h(小时)、m(分钟)、d(天)，如12h就表示从12小时前开始统计。<br>–until : 截止时间，配合—since可以分析一段时间内的慢查询。</li>
-</ul>
-<pre>
-
-[root@iZ2319y43bmZ mysql]# pt-query-digest  slowquery_2018060110.log
-
-# 240ms user time, 20ms system time, 24.45M rss, 204.81M vsz
-# Current date: Mon Jun  4 10:08:33 2018
-# Hostname: iZ2319y43bmZ
-# Files: slowquery_2018060110.log
-# Overall: 1 total, 1 unique, 0 QPS, 0x concurrency ______________________
-# Time range: all events occurred at 2018-06-01 10:49:59
-# Attribute          total     min     max     avg     95%  stddev  median
-# ============     ======= ======= ======= ======= ======= ======= =======
-# Exec time             1s      1s      1s      1s      1s       0      1s
-# Lock time           75us    75us    75us    75us    75us       0    75us
-# Rows sent            143     143     143     143     143       0     143
-# Rows examine         143     143     143     143     143       0     143
-# Query size            42      42      42      42      42       0      42
-
-
-# Profile
-# Rank Query ID           Response time Calls R/Call V/M   Item
-# ==== ================== ============= ===== ====== ===== ===========
-#    1 0xFBE0E38DA0F69470 1.0037 100.0%     1 1.0037  0.00 SHOW TABLES
-
-# Query 1: 0 QPS, 0x concurrency, ID 0xFBE0E38DA0F69470 at byte 0 ________
-# This item is included in the report because it matches --limit.
-# Scores: V/M = 0.00
-# Time range: all events occurred at 2018-06-01 10:49:59
-# Attribute    pct   total     min     max     avg     95%  stddev  median
-# ============ === ======= ======= ======= ======= ======= ======= =======
-# Count        100       1
-# Exec time    100      1s      1s      1s      1s      1s       0      1s
-# Lock time    100    75us    75us    75us    75us    75us       0    75us
-# Rows sent    100     143     143     143     143     143       0     143
-# Rows examine 100     143     143     143     143     143       0     143
-# Query size   100      42      42      42      42      42       0      42
-# String:
-# Databases    kpzs
-# Hosts        localhost
-# Users        doyd
-# Query_time distribution
-#   1us
-#  10us
-# 100us
-#   1ms
-#  10ms
-# 100ms
-#    1s  ################################################################
-#  10s+
-# Tables
-#    SHOW TABLE STATUS FROM `kpzs` LIKE 'kpzs_v2'\G
-#    SHOW CREATE TABLE `kpzs`.`kpzs_v2`\G
-SHOW /*!50002 FULL*/ TABLES FROM `kpzs_v2`\G
-[root@iZ2319y43bmZ mysql]# 
-
-
-
-
-
-</pre>
-
-
-<h1 id="二进制日志文件"><a href="#二进制日志文件" class="headerlink" title="二进制日志文件"></a>二进制日志文件</h1><p>二进制日志（binlog）记录 MySQL 数据库中所有与更新相关的操作，即二进制日志记录了所有的 DDL（数据定义语言）语句和 DML（数据操纵语言）语句，但是不包括数据查询语句。常用于恢复数据库和主从复制。</p>
-<h2 id="二进制日志作用"><a href="#二进制日志作用" class="headerlink" title="二进制日志作用"></a>二进制日志作用</h2><p>假如备份策略是每天0：00备份一次，那么在本次备份后，下面备份前的这个时间段内某一时刻，数据库崩溃，如果只是依靠备份文件来恢复，中间那段时间的数据就丢失了，所以还需要依靠二进制日志文件来对0：00之后的所有更新相关操作进行replay一次，这样就可以将数据恢复到崩溃时的状态，这与oracle中的归档日志是类似的。</p>
-<h2 id="二进制日志类型"><a href="#二进制日志类型" class="headerlink" title="二进制日志类型"></a>二进制日志类型</h2><ul>
-<li><p>statement模式：记录对数据库实例的更新语句，例如对语句update A set user=’test’，这种模式只记录该语句，这种模式的优点是日志量小，IO压力小，性能较高，缺点是记录的不够精确，例如，某些sql语句带了一些函数如user()，不同的数据库用户执行sql可能会操作不同的数据，这种情况下，只是记录语句是不够的，在恢复的时候，并不知道该语句当初是哪个用户执行的，所以并不能保证恢复与操作完全一致。</p>
-</li>
-<li><p>row模式：记录对语句所修改到的行，以及对行的具体修改，例如，update A set user=’test’，这条语句所影响到的行，以及修改，都会记录到二进制文件中，如果A表中有1000行数据，那么这一千行数据都会</p>
-</li>
-<li><p>mixed模式：在如下情况，系统会自动从statement模式切换刀片</p>
+<li><p>项目（project）：由一组关联的应用容器组成的一个完整业务单元。</p>
 </li>
 </ul>
-<h2 id="查看二进制相关配置"><a href="#查看二进制相关配置" class="headerlink" title="查看二进制相关配置"></a>查看二进制相关配置</h2><pre>
-mysql> SHOW VARIABLES LIKE 'log_bin%';
-+---------------------------------+-------+
-| Variable_name                   | Value |
-+---------------------------------+-------+
-| log_bin                         | OFF   |
-| log_bin_basename                |       |
-| log_bin_index                   |       |
-| log_bin_trust_function_creators | OFF   |
-| log_bin_use_v1_row_events       | OFF   |
-+---------------------------------+-------+
-5 rows in set (0.04 sec)
-
-mysql> 
-
-</pre>
-
-
-
-
-
-
-
-
-
-<p>​    </p>
+<p>可以看出，一个项目可以由多个服务（容器）关联而成，Compose 面向项目进行管理。</p>
+<p>docker-compose有很多命令，用于容器应用的整个生命周期：</p>
+<ul>
+<li>启动，停止，重建服务。</li>
+<li>查看运行中服务的状态。</li>
+<li>流式输出运行中服务的日志。</li>
+<li>对服务运行的命令。</li>
+</ul>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>一般在 Linux 中直接下载二进制文件即可：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> sudo chmod +x /usr/local/bin/docker-compose</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> docker-compose --version</span><br><span class="line">docker-compose version 1.22.0, build f46880fe</span><br></pre></td></tr></table></figure>
+<h3 id="开始使用docker-compose"><a href="#开始使用docker-compose" class="headerlink" title="开始使用docker-compose"></a>开始使用docker-compose</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建文件夹 dockertest ，在该目录中编写app.py，内容为</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> redis</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">cache = redis.Redis(host=<span class="string">'redis'</span>, port=<span class="number">6379</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_hit_count</span><span class="params">()</span>:</span></span><br><span class="line">    retries = <span class="number">5</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">return</span> cache.incr(<span class="string">'hits'</span>)</span><br><span class="line">        <span class="keyword">except</span> redis.exceptions.ConnectionError <span class="keyword">as</span> exc:</span><br><span class="line">            <span class="keyword">if</span> retries == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">raise</span> exc</span><br><span class="line">            retries -= <span class="number">1</span></span><br><span class="line">            time.sleep(<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">()</span>:</span></span><br><span class="line">    count = get_hit_count()</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'Hello World! I have been seen &#123;&#125; times.\n'</span>.format(count)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    app.run(host=<span class="string">"0.0.0.0"</span>, debug=<span class="keyword">True</span>)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment">#编写 Dockerfile 文件，内容为</span></span><br><span class="line"></span><br><span class="line">FROM python:<span class="number">3.6</span>-alpine</span><br><span class="line">ADD . /code</span><br><span class="line">WORKDIR /code</span><br><span class="line">RUN pip install redis flask</span><br><span class="line">CMD [<span class="string">"python"</span>, <span class="string">"app.py"</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#编写 docker-compose.yml 文件，内容为</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">version: <span class="string">'3'</span></span><br><span class="line">services:</span><br><span class="line">  web:</span><br><span class="line">    build: .</span><br><span class="line">    ports:</span><br><span class="line">     - <span class="string">"5000:5000"</span></span><br><span class="line">  redis:</span><br><span class="line">    image: <span class="string">"redis:alpine"</span></span><br></pre></td></tr></table></figure>
+<p>docker-compose.yml 文件中定义两个服务：web 和redis。</p>
+<p>web：使用了Dockerfile中构建的镜像，把容器中的5000端口映射到宿主机的8300端口。</p>
+<p>redis：使用了从 Docker Hub registry 中拉取的官方 redis 镜像。</p>
+<h3 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h3><p>docker-compose的基本使用格式如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Usage:</span><br><span class="line">  docker-compose [-f &lt;arg&gt;...] [options] [COMMAND] [ARGS...]</span><br><span class="line">  docker-compose --help</span><br><span class="line">  docker-compose command --help</span><br></pre></td></tr></table></figure>
+<h4 id="选项说明"><a href="#选项说明" class="headerlink" title="选项说明"></a>选项说明</h4><ul>
+<li><code>-f  FILE</code>     指定使用的 compose 模板文件（显示指定文件路径），默认为当前目录下的 docker-compose.yml ，如果没有则报错。</li>
+<li><code>-p NAME</code> 指定项目名称，默认将使用所在目录名称作为项目名。</li>
+<li><code>--verbose</code>  显示详细输出。</li>
+<li><code>--log-level LEVEL</code>  设置日志级别 (DEBUG, INFO, WARNING, ERROR, CRITICAL)。</li>
+<li><code>-v, --version</code>  打印版本并退出。</li>
+</ul>
+<h4 id="命令说明"><a href="#命令说明" class="headerlink" title="命令说明"></a>命令说明</h4><h5 id="build"><a href="#build" class="headerlink" title="build"></a>build</h5><p>构建或重建项目中的服务容器。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Usage: build [options] [--build-arg key=val...] [SERVICE...]</span><br></pre></td></tr></table></figure>
+<p>服务容器一旦构建后，将会带上一个标记名，例如对于 web 项目中的一个 db 容器，可能是 web_db。<br>可以随时在项目目录下运行 <code>docker-compose build</code> 来重新构建服务。</p>
+<p>选项包括：</p>
+<ul>
+<li><code>--force-rm</code> 删除构建过程中的临时容器。</li>
+<li><code>--no-cache</code>  构建镜像过程中不使用 cache（这将加长构建过程）。</li>
+<li><code>--pull</code> 始终尝试通过 pull 来获取更新版本的镜像。</li>
+<li><code>-m, --memory MEM</code> 为创建的容器设置内存限制</li>
+</ul>
 
       
     </div>
@@ -829,7 +561,7 @@ mysql>
       
         <div class="post-tags">
           
-            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+            <a href="/tags/Docker/" rel="tag"># Docker</a>
           
         </div>
       
@@ -842,8 +574,8 @@ mysql>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/10/DataBaseTransaction/" rel="next" title="理解数据库事务和锁">
-                <i class="fa fa-chevron-left"></i> 理解数据库事务和锁
+              <a href="/2018/06/04/浅谈MySQL日志文件系统/" rel="next" title="浅谈MySQL日志文件系统">
+                <i class="fa fa-chevron-left"></i> 浅谈MySQL日志文件系统
               </a>
             
           </div>
@@ -852,8 +584,8 @@ mysql>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/04/Docker-compose-learning-notes/" rel="prev" title="Docker-compose简明教程">
-                Docker-compose简明教程 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/03/docker入门概述/" rel="prev" title="docker入门概述">
+                docker入门概述 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1043,7 +775,7 @@ mysql>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL日志文件系统"><span class="nav-number">1.</span> <span class="nav-text">MySQL日志文件系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL日志分类"><span class="nav-number">2.</span> <span class="nav-text">MySQL日志分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#错误日志"><span class="nav-number">3.</span> <span class="nav-text">错误日志</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通用查询日志"><span class="nav-number">4.</span> <span class="nav-text">通用查询日志</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#慢查询日志"><span class="nav-number">5.</span> <span class="nav-text">慢查询日志</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#慢查询相关配置"><span class="nav-number">5.1.</span> <span class="nav-text">慢查询相关配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#慢查询日志分析"><span class="nav-number">5.2.</span> <span class="nav-text">慢查询日志分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mysqldumpslow"><span class="nav-number">5.2.1.</span> <span class="nav-text">mysqldumpslow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#percona-toolkit"><span class="nav-number">5.2.2.</span> <span class="nav-text">percona-toolkit</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二进制日志文件"><span class="nav-number">6.</span> <span class="nav-text">二进制日志文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二进制日志作用"><span class="nav-number">6.1.</span> <span class="nav-text">二进制日志作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二进制日志类型"><span class="nav-number">6.2.</span> <span class="nav-text">二进制日志类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看二进制相关配置"><span class="nav-number">6.3.</span> <span class="nav-text">查看二进制相关配置</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开始使用docker-compose"><span class="nav-number">3.</span> <span class="nav-text">开始使用docker-compose</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用说明"><span class="nav-number">4.</span> <span class="nav-text">使用说明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#选项说明"><span class="nav-number">4.1.</span> <span class="nav-text">选项说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#命令说明"><span class="nav-number">4.2.</span> <span class="nav-text">命令说明</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#build"><span class="nav-number">4.2.1.</span> <span class="nav-text">build</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
