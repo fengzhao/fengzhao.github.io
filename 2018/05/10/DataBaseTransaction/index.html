@@ -131,7 +131,7 @@
 <meta property="og:site_name" content="FengZhao&#39;s Blog">
 <meta property="og:description" content="数据库事务 数据库事务(Database Transaction)，一般是指要做的或所做的事情。在计算机术语中是指访问并可能更新数据库中各种数据项的一个程序执行单元(unit)。  一个数据库事务通常包含了一个序列的对数据库的读/写操作。它的存在包含有以下两个目的：   为数据库操作序列提供了一个从失败中恢复到正常状态的方法，同时提供了数据库即使在异常状态下仍能保持一致性的方法。当多个应用程序在并">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-13T16:21:19.807Z">
+<meta property="og:updated_time" content="2019-08-15T15:15:16.286Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解数据库事务和锁">
 <meta name="twitter:description" content="数据库事务 数据库事务(Database Transaction)，一般是指要做的或所做的事情。在计算机术语中是指访问并可能更新数据库中各种数据项的一个程序执行单元(unit)。  一个数据库事务通常包含了一个序列的对数据库的读/写操作。它的存在包含有以下两个目的：   为数据库操作序列提供了一个从失败中恢复到正常状态的方法，同时提供了数据库即使在异常状态下仍能保持一致性的方法。当多个应用程序在并">
@@ -449,7 +449,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-14 00:21:19" itemprop="dateModified" datetime="2019-01-14T00:21:19+08:00">2019-01-14</time>
+                <time title="修改时间：2019-08-15 23:15:16" itemprop="dateModified" datetime="2019-08-15T23:15:16+08:00">2019-08-15</time>
               
             
           </span>
@@ -515,7 +515,7 @@
 </ul>
 </blockquote>
 <a id="more"></a>
-<p>但在现实情况下，失败的风险很高。在一个数据库事务的执行过程中，有可能会遇上事务操作失败、数据库系统/操作系统失败，甚至是存储介质失败等情况。这便需要DBMS对一个执行失败的事务执行恢复操作，将其数据库状态恢复到一致状态（数据的一致性得到保证的状态）。为了实现将数据库状态恢复到一致状态的功能，DBMS通常需要维护事务日志以追踪事务中所有影响数据库数据的操作。</p>
+<p>但在现实情况下，失败的风险很高。在一个数据库事务的执行过程中，有可能会遇上事务操作失败、数据库系统/操作系统失败，甚至是存储介质失败等情况。这便需要DBMS对一个执行失败的事务执行恢复操作，将其数据库状态恢复到一致状态（数据的一致性得到保证的状态）    。为了实现将数据库状态恢复到一致状态的功能，DBMS通常需要维护事务日志以追踪事务中所有影响数据库数据的操作。</p>
 <h2 id="事务特性"><a href="#事务特性" class="headerlink" title="事务特性"></a>事务特性</h2><p>并非任意的对数据库的操作序列都是数据库事务。数据库事务拥有以下四个特性，习惯上被称之为ACID特性。</p>
 <blockquote>
 <ul>
@@ -594,7 +594,7 @@
 </ul>
 </blockquote>
 <h2 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h2><p>当并发事务同时访问一个资源时，有可能导致数据不一致，因此需要一种机制来将数据访问顺序化，以保证数据库数据的一致性。锁就是其中的一种机制。可以简单理解为当某个事务在操作开始时，锁定某一个对象，在这个事务操作结束之前，不允许其他事务操作这个对象。下面是常见的锁分类：</p>
-<h3 id="锁的分类"><a href="#锁的分类" class="headerlink" title="锁的分类"></a>锁的分类</h3><p>1、按照锁定的对象的粒度划分：表级锁、行级锁、页级锁（mysql）<br><br>2、按锁级别划分：共享锁、排他锁<br><br>3、按使用方式划分，可分为乐观锁、悲观锁<br></p>
+<h3 id="锁的分类"><a href="#锁的分类" class="headerlink" title="锁的分类"></a>锁的分类</h3><p>1、按照锁定的对象的粒度划分：表级锁、行级锁、页级锁（mysql）<br><br>2、按锁级别划分：共享锁（shared lock，读锁，shared lock）、排他锁（exclusive lock，写锁，write lock）<br><br>3、按使用方式划分，可分为乐观锁、悲观锁<br></p>
 <p>各种锁的比较：</p>
 <blockquote>
 <ul>
@@ -738,7 +738,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -860,7 +860,7 @@
       <div class="footer-inner">
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
