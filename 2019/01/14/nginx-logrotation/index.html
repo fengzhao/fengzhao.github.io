@@ -173,17 +173,17 @@
 
 
 
-  <meta name="description" content="nginx日志在 nginx 中，主要有 access 日志、error 日志 、 rewrite 日志。前两种由ngx_http_log_module模块予以支持，rewrite日志则由ngx_http_rewrite_module模块提供，这两个模块默认都已包含且启用。 -">
+  <meta name="description" content="nginx日志处理在 nginx 中，主要有  access 日志、error 日志 、 rewrite 日志。前两种由 ngx_http_log_module 模块予以支持，rewrite 日志则由 ngx_http_rewrite_module 模块提供，这两个模块默认都已包含且启用。 日志文件包含了关于系统中发生的事件的有用信息，在排障过程中或者系统性能分析时经常被用到。 我们不管在生产环境">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nginx-logrotation-日志切割">
 <meta property="og:url" content="https://fengzhao.me/2019/01/14/nginx-logrotation/index.html">
 <meta property="og:site_name" content="FengZhao&#39;s Blog">
-<meta property="og:description" content="nginx日志在 nginx 中，主要有 access 日志、error 日志 、 rewrite 日志。前两种由ngx_http_log_module模块予以支持，rewrite日志则由ngx_http_rewrite_module模块提供，这两个模块默认都已包含且启用。 -">
+<meta property="og:description" content="nginx日志处理在 nginx 中，主要有  access 日志、error 日志 、 rewrite 日志。前两种由 ngx_http_log_module 模块予以支持，rewrite 日志则由 ngx_http_rewrite_module 模块提供，这两个模块默认都已包含且启用。 日志文件包含了关于系统中发生的事件的有用信息，在排障过程中或者系统性能分析时经常被用到。 我们不管在生产环境">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-16T17:22:18.838Z">
+<meta property="og:updated_time" content="2022-08-22T03:22:07.728Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx-logrotation-日志切割">
-<meta name="twitter:description" content="nginx日志在 nginx 中，主要有 access 日志、error 日志 、 rewrite 日志。前两种由ngx_http_log_module模块予以支持，rewrite日志则由ngx_http_rewrite_module模块提供，这两个模块默认都已包含且启用。 -">
+<meta name="twitter:description" content="nginx日志处理在 nginx 中，主要有  access 日志、error 日志 、 rewrite 日志。前两种由 ngx_http_log_module 模块予以支持，rewrite 日志则由 ngx_http_rewrite_module 模块提供，这两个模块默认都已包含且启用。 日志文件包含了关于系统中发生的事件的有用信息，在排障过程中或者系统性能分析时经常被用到。 我们不管在生产环境">
 
 
 
@@ -498,7 +498,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-17 01:22:18" itemprop="dateModified" datetime="2019-01-17T01:22:18+08:00">2019-01-17</time>
+                <time title="修改时间：2022-08-22 11:22:07" itemprop="dateModified" datetime="2022-08-22T11:22:07+08:00">2022-08-22</time>
               
             
           </span>
@@ -549,8 +549,28 @@
       
 
       
-        <h1 id="nginx日志"><a href="#nginx日志" class="headerlink" title="nginx日志"></a>nginx日志</h1><p>在 nginx 中，主要有 access 日志、error 日志 、 rewrite 日志。前两种由ngx_http_log_module模块予以支持，rewrite日志则由ngx_http_rewrite_module模块提供，这两个模块默认都已包含且启用。</p>
-<p>- </p>
+        <h1 id="nginx日志处理"><a href="#nginx日志处理" class="headerlink" title="nginx日志处理"></a>nginx日志处理</h1><p>在 nginx 中，主要有  access 日志、error 日志 、 rewrite 日志。前两种由 <code>ngx_http_log_module</code> 模块予以支持，<code>rewrite</code> 日志则由 <code>ngx_http_rewrite_module</code> 模块提供，这两个模块默认都已包含且启用。</p>
+<p>日志文件包含了关于系统中发生的事件的有用信息，在排障过程中或者系统性能分析时经常被用到。</p>
+<p>我们不管在生产环境还是开发环境，看日志是必不可少的，日志中往往包含很多有用的信息，有时候被<code>DDOS</code>、上传非法文件等等，我们都需要通过日志分析。</p>
+<p>但是日志是跟访问量成正比的，你的访问量越大，你的各种级别日志就越多，日志文件大小会增长极快，服务器会很快消耗磁盘空间，这成个很严重的问题。</p>
+<p>对于忙碌的服务器，日志文件大小会增长极快，服务器会很快消耗磁盘空间，这成了个问题。</p>
+<p>除此之外，处理查看一个单个的庞大日志文件也常常是件十分棘手的事。你阅读、打开都要花费很大力气，那么怎么才能处理好这种情况？</p>
+<p>logrotate 在很多 Linux 发行版上都是默认安装的。系统会定时运行 logrotate，一般是每天一次。系统是这么实现按天执行的。</p>
+<p>crontab 会每天定时执行 /etc/cron.daily 目录下的脚本，而这个目录下有个文件叫 logrotate。</p>
+<p>logrotate是个十分有用的工具，它可以自动对日志进行截断（或轮循）、压缩以及删除旧的日志文件。</p>
+<p>例如，你可以设置logrotate，让/var/log/foo日志文件每30天轮循，并删除超过6个月的日志。配置完后，logrotate的运作完全自动化，不必进行任何进一步的人为干预。</p>
+<p>系统会利用定时任务定时运行<code>logrotate</code>，一般是每天一次。<code>crontab</code>会每天定时执行<code>/etc/cron.daily</code>目录下的脚本，而这个目录下有个文件叫<code>logrotate</code>。我们只需要配置你所需要切割的参数就可以。</p>
+<p>很多程序的会用到<code>logrotate</code>滚动日志，比如<code>nginx</code>。它们安装后，会在<code>/etc/logrotate.d</code>这个目录下增加自己的<code>logrotate</code>的配置文件。<code>logrotate</code>什么时候执行 <code>/etc/logrotate.d</code>下的配置呢？看到<code>/etc/logrotate.conf</code>里这行，一切就不言而喻了。</p>
+<p>在 centos 上脚本内容是这样的：系统自带 crontab task：/etc/cron.daily/logrotate，每天运行一次。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@gop-sg-192-168-56-103 logrotate.d]# cat /etc/cron.daily/logrotate</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>!/bin/sh</span><br><span class="line"></span><br><span class="line">/usr/sbin/logrotate -s /var/lib/logrotate/logrotate.status /etc/logrotate.conf</span><br><span class="line">EXITVALUE=$?</span><br><span class="line">if [ $EXITVALUE != 0 ]; then</span><br><span class="line">    /usr/bin/logger -t logrotate "ALERT exited abnormally with [$EXITVALUE]"</span><br><span class="line">fi</span><br><span class="line">exit 0</span><br></pre></td></tr></table></figure>
+<p>可以看到这个脚本主要做的事就是以<code>/etc/logrotate.conf</code>为配置文件执行了 logrotate。<strong>就是这样实现了每天执行一次 logrotate。</strong></p>
+<p>因为我的系统执行 /etc/cron.daily 目录下的脚本不是我想滚动日志的时间，所以我把 /etc/cron.daily/logrotate 拷了出来，改了一下 logrotate 配置文件的路径，然后在 crontab 里加上一条指定时间执行这个脚本的记录，自定义周期滚动日志就大功告成了。这种自定义的方式有两点要注意：</p>
+<ul>
+<li><p>配置文件里一定要配置 rotate 文件数目 这个参数。如果不配置默认是 0 个，也就是只允许存在一份日志，刚切分出来的日志会马上被删除。多么痛的领悟，说多了都是泪。</p>
+</li>
+<li><p>执行 logrotate 命令最好加 -f 参数，不然有时候配置文件修改的内容不生效。</p>
+</li>
+</ul>
 
       
     </div>
@@ -677,7 +697,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -706,7 +726,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">7</span>
+                      
+                    
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -769,7 +791,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#nginx日志"><span class="nav-number">1.</span> <span class="nav-text">nginx日志</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#nginx日志处理"><span class="nav-number">1.</span> <span class="nav-text">nginx日志处理</span></a></li></ol></div>
             
 
           </div>
