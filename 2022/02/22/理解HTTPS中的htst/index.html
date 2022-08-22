@@ -184,7 +184,7 @@
 <meta property="og:image" content="https://fengzhao.me/2022/02/22/理解HTTPS中的htst/redirect.jpeg">
 <meta property="og:image" content="https://fengzhao.me/2022/02/22/理解HTTPS中的htst/307.jpg">
 <meta property="og:image" content="https://fengzhao.me/2022/02/22/理解HTTPS中的htst/6-insecurity-visit.jpg">
-<meta property="og:updated_time" content="2022-08-22T02:53:50.726Z">
+<meta property="og:updated_time" content="2022-08-22T03:11:50.442Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解HTTPS中的htst">
 <meta name="twitter:description" content="起因有不少网站只通过HTTPS对外提供服务，但用户在访问某个网站的时候，在浏览器里却往往直接输入网站域名（例如  www.example.com ），甚至都不带www前缀，而不是输入完整的URL（例如 https://www.example.com ）。不过浏览器依然能正确的使用HTTPS发起请求。这背后多亏了服务器和浏览器的协作。 现代浏览器，地址栏（多功能框）也可以用作搜索框。地址栏会自动使用">
@@ -503,7 +503,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2022-08-22 10:53:50" itemprop="dateModified" datetime="2022-08-22T10:53:50+08:00">2022-08-22</time>
+                <time title="修改时间：2022-08-22 11:11:50" itemprop="dateModified" datetime="2022-08-22T11:11:50+08:00">2022-08-22</time>
               
             
           </span>
@@ -583,17 +583,21 @@
 <p>既然建立HTTPS连接之前的这一次HTTP明文请求和重定向有可能被攻击者劫持，那么解决这一问题的思路自然就变成了如何避免出现这样的HTTP请求。</p>
 <p>我们期望的浏览器行为是：<strong>当用户让浏览器发起HTTP请求的时候，浏览器内部将其转换为HTTPS请求，直接略过上述的HTTP请求和重定向，从而使得中间人攻击失效，规避风险。</strong></p>
 <h2 id="HSTS技术"><a href="#HSTS技术" class="headerlink" title="HSTS技术"></a>HSTS技术</h2><p>那么问题来了，浏览器是如何做到这一点的呢？它怎么知道哪个域名应该发HTTPS请求，那个域名应该用HTTP请求呢？</p>
-<p>HSTS技术就这样被引进来了。</p>
-<p>HSTS的全称是HTTP Strict-Transport-Security，它是一个Web安全策略机制（web security policy mechanism）。</p>
-<p><strong>HSTS最为核心的技术其实是一个HTTP响应头（HTTP Response Header）。</strong></p>
+<p>HSTS技术就这样被引进来了。<strong>HSTS(HTTP Strict Transport Security)是国际互联网工程组织 IETF 发布的一种互联网安全策略机制（web security policy mechanism）。采用HSTS策略的网站将保证浏览器始终连接到该网站的HTTPS加密版本，不需要用户手动在URL地址栏中输入加密地址，以减少会话劫持风险。HSTS 最早于2015年被纳入到 ThoughtWorks 技术雷达，并且在2016年的最新一期技术雷达里，它直接从“评估（Trial）”阶段进入到了“采用（Adopt）“阶段，这意味着ThoughtWorks强烈主张业界积极采用这项安全防御措施，并且ThoughtWorks已经将其应用于自己的项目。</strong></p>
+<p>HSTS 最为核心的是一个HTTP响应头（HTTP Response Header）。正是它可以让浏览器得知，在接下来的一段时间内，当前域名只能通过HTTPS进行访问，并且在浏览器发现当前连接不安全的情况下，强制拒绝用户的后续访问要求。</p>
 <p>正是它可以让浏览器得知，在接下来的一段时间内，当前域名只能通过HTTPS进行访问，并且在浏览器发现当前连接不安全的情况下，强制拒绝用户的后续访问要求。</p>
 <p>HSTS Header的语法如下：</p>
 <figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Strict-Transport-Security</span>: &lt;max-age=&gt;[; includeSubDomains][; preload]</span><br></pre></td></tr></table></figure>
-<p>max-age是必选参数，是一个以秒为单位的数值，它代表着HSTS Header的过期时间，通常设置为1年，即31536000秒。</p>
-<p>includeSubDomains是可选参数，如果包含它，则意味着当前域名及其子域名均开启HSTS保护。</p>
-<p>preload是可选参数，只有当你申请将自己的域名加入到浏览器内置列表的时候才需要使用到它。关于浏览器内置列表，下文有详细介绍。</p>
+<ul>
+<li><p>max-age是必选参数，是一个以秒为单位的数值，它代表着HSTS Header的过期时间，通常设置为1年，即31536000秒。</p>
+</li>
+<li><p>includeSubDomains是可选参数，如果包含它，则意味着当前域名及其子域名均开启HSTS保护。</p>
+</li>
+<li><p>preload是可选参数，只有当你申请将自己的域名加入到浏览器内置列表的时候才需要使用到它。关于浏览器内置列表，下文有详细介绍。</p>
+</li>
+</ul>
 <h3 id="让浏览器直接发起HTTPS请求"><a href="#让浏览器直接发起HTTPS请求" class="headerlink" title="让浏览器直接发起HTTPS请求"></a>让浏览器直接发起HTTPS请求</h3><p>只要在服务器返回给浏览器的响应头中，增加Strict-Transport-Security这个HTTP Header（下文简称HSTS Header），例如：</p>
-<p>Strict-Transport-Security: max-age=31536000; includeSubDomains</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Strict-Transport-Security: max-age=31536000; includeSubDomains</span><br></pre></td></tr></table></figure>
 <p>就可以告诉浏览器，在接下来的31536000秒内（1年），对于当前域名及其子域名的后续通信应该强制性的只使用HTTPS，直到超过有效期为止。</p>
 <p>Chrome、Firefox 等浏览器里，当您尝试访问该域名下的内容时，会产生一个 307 Internal Redirect（内部跳转），自动跳转到 HTTPS 请求。</p>
 <p>注意这段话，Chrome 访问该域名时，会产生一个 307 的内部跳转，并自动重定向到该地址的 HTTPS 版本。</p>
@@ -606,6 +610,7 @@
 <p>因为 HSTS Header 存在于每个响应中，随着用户和网站的交互，这个有效时间时刻都在刷新，再加上有效期通常都被设置成了1年。</p>
 <p>所以只要用户的前后两次请求之间的时间间隔没有超过1年，则基本上不会出现安全风险。</p>
 <p>更何况，就算超过了有效期，但是只要用户和网站再进行一次新的交互，用户的浏览器又将开启有效期为1年的HSTS保护。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 看一下京东网站的案例，访问http站，重定向到https站点，且返回了HSTS响应头，如果是PC浏览器，下次访问就直接内部307了</span><br><span class="line"></span><br><span class="line">[root@compute-share-stxz ~]#</span><br><span class="line">[root@compute-share-stxz ~]# curl -I  http://www.jd.com</span><br><span class="line">HTTP/1.1 302 Moved Temporarily</span><br><span class="line">Server: nginx</span><br><span class="line">Date: Mon, 22 Aug 2022 03:09:17 GMT</span><br><span class="line">Content-Type: text/html</span><br><span class="line">Content-Length: 138</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Location: https://www.jd.com/</span><br><span class="line">Timing-Allow-Origin: *</span><br><span class="line">X-Trace: 302-1661137757974-0-0-0-0-0</span><br><span class="line">Strict-Transport-Security: max-age=3600</span><br><span class="line"></span><br><span class="line">[root@compute-share-stxz ~]#</span><br></pre></td></tr></table></figure>
 <h3 id="强制拒绝非HTTPS请求"><a href="#强制拒绝非HTTPS请求" class="headerlink" title="强制拒绝非HTTPS请求"></a>强制拒绝非HTTPS请求</h3><p>在没有HSTS保护的情况下，当浏览器发现当前网站的证书出现错误，或者浏览器和服务器之间的通信不安全，无法建立HTTPS连接的时候，浏览器通常会警告用户，但是却又允许用户继续不安全的访问。（比如使用自签证书的网站，但是客户端电脑上又没有添加信任的CA）</p>
 <p>如下图所示，用户可以点击图中红色方框中的链接，继续在不安全的连接下进行访问。(浏览器依然允许用户进行不安全的访问)</p>
 <p>理论上而言，用户看到这个警告之后就应该提高警惕，意识到自己和网站之间的通信不安全，可能被劫持也可能被窃听，如果访问的恰好是银行、金融类网站的话后果更是不堪设想，理应终止后续操作。<br>然而现实很残酷，就我的实际观察来看，有不少用户在遇到这样的警告之后依然选择了继续访问。</p>
