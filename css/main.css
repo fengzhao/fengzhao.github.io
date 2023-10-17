@@ -1932,7 +1932,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffff13;
+  background: #41ff36;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2605,7 +2605,7 @@ ul.breadcrumb li+li:last-child {
 .header {
   position: relative;
   margin: 0 auto;
-  width: 85%;
+  width: 82%;
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .header {
@@ -2665,7 +2665,7 @@ ul.breadcrumb li+li:last-child {
   }
 }
 .container .main-inner {
-  width: 85%;
+  width: 82%;
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .container .main-inner {
