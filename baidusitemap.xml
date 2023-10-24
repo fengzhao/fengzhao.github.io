@@ -1,210 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-
-    
   <url>
-    <loc>https://fengzhao.me/2022/08/22/%E4%B8%80%E4%BA%9B%E7%BB%84%E7%BD%91%E5%B8%B8%E8%AF%86%E5%92%8C%E6%96%B9%E6%B3%95/</loc>
-    <lastmod>2023-10-17T03:28:58.139Z</lastmod>
-    <data>
-        <display>
-        <title>一些组网常识和方法</title>
-        <pubTime>2022-08-22T03:27:59.000Z</pubTime>
-        
-        <tag>计算机网络</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
+    <loc>https://fengzhao.me/2022/08/22/2022-08-22-%E4%B8%80%E4%BA%9B%E7%BB%84%E7%BD%91%E5%B8%B8%E8%AF%86%E5%92%8C%E6%96%B9%E6%B3%95/</loc>
+    <lastmod>2023-10-17</lastmod>
+  </url>
   <url>
-    <loc>https://fengzhao.me/2019/01/14/nginx-logrotation/</loc>
-    <lastmod>2022-08-22T07:38:12.728Z</lastmod>
-    <data>
-        <display>
-        <title>nginx-logrotation-日志切割</title>
-        <pubTime>2019-01-14T15:36:14.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
+    <loc>https://fengzhao.me/2019/01/14/2019-01-14-nginx-logrotation/</loc>
+    <lastmod>2022-08-22</lastmod>
+  </url>
   <url>
-    <loc>https://fengzhao.me/2022/02/22/%E7%90%86%E8%A7%A3HTTPS%E4%B8%AD%E7%9A%84htst/</loc>
-    <lastmod>2022-08-22T03:12:26.642Z</lastmod>
-    <data>
-        <display>
-        <title>理解HTTPS中的htst</title>
-        <pubTime>2022-02-22T09:43:46.000Z</pubTime>
-        
-        <tag>HTTPS</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
+    <loc>https://fengzhao.me/2022/02/22/2022-02-22-%E7%90%86%E8%A7%A3HTTPS%E4%B8%AD%E7%9A%84htst/</loc>
+    <lastmod>2022-08-22</lastmod>
+  </url>
   <url>
-    <loc>https://fengzhao.me/2018/05/10/DataBaseTransaction/</loc>
-    <lastmod>2019-08-15T15:15:16.286Z</lastmod>
-    <data>
-        <display>
-        <title>理解数据库事务和锁</title>
-        <pubTime>2018-05-10T03:39:47.000Z</pubTime>
-        
-        <tag>数据库</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
+    <loc>https://fengzhao.me/2018/05/10/2018-05-10-DataBaseTransaction/</loc>
+    <lastmod>2019-08-15</lastmod>
+  </url>
   <url>
-    <loc>https://fengzhao.me/2019/01/03/docker%E5%85%A5%E9%97%A8%E6%A6%82%E8%BF%B0/</loc>
-    <lastmod>2019-01-13T16:21:22.757Z</lastmod>
-    <data>
-        <display>
-        <title>docker入门概述</title>
-        <pubTime>2019-01-03T14:48:46.000Z</pubTime>
-        
-        <tag>docker</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
+    <loc>https://fengzhao.me/2019/01/03/2019-01-03-docker%E5%85%A5%E9%97%A8%E6%A6%82%E8%BF%B0/</loc>
+    <lastmod>2019-01-13</lastmod>
+  </url>
   <url>
-    <loc>https://fengzhao.me/2019/01/03/Docker-compose%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2019-01-03T15:05:54.079Z</lastmod>
-    <data>
-        <display>
-        <title>Docker-compose简明教程</title>
-        <pubTime>2019-01-03T15:00:49.000Z</pubTime>
-        
-        <tag>docker</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
+    <loc>https://fengzhao.me/2019/01/03/2019-01-03-Docker-compose%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/</loc>
+    <lastmod>2019-01-03</lastmod>
+  </url>
   <url>
-    <loc>https://fengzhao.me/2018/06/04/%E6%B5%85%E8%B0%88MySQL%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</loc>
-    <lastmod>2018-10-30T16:43:14.321Z</lastmod>
-    <data>
-        <display>
-        <title>浅谈MySQL日志文件系统</title>
-        <pubTime>2018-06-04T03:47:26.000Z</pubTime>
-        
-        <tag>MySQL</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-    
-  <url>
-    <loc>https://fengzhao.me/2016/09/25/singleton/</loc>
-    <lastmod>2018-05-08T12:30:58.637Z</lastmod>
-    <data>
-        <display>
-        <title>Java设计模式之单例模式</title>
-        <pubTime>2016-09-25T06:00:00.000Z</pubTime>
-        
-        <tag>设计模式</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://fengzhao.me/2017/05/07/python-special-method/</loc>
-    <lastmod>2018-05-08T12:27:00.271Z</lastmod>
-    <data>
-        <display>
-        <title>Python特殊方法</title>
-        <pubTime>2017-05-07T06:00:00.000Z</pubTime>
-        
-        <tag>python</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://fengzhao.me/2016/10/04/2016-10-4-factorypattern/</loc>
-    <lastmod>2018-05-08T12:26:46.642Z</lastmod>
-    <data>
-        <display>
-        <title>Java设计模式之工厂模式</title>
-        <pubTime>2016-10-04T08:00:00.000Z</pubTime>
-        
-        <tag>设计模式</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://fengzhao.me/2017/11/12/annotation/</loc>
-    <lastmod>2018-05-08T12:25:29.835Z</lastmod>
-    <data>
-        <display>
-        <title>Java注解</title>
-        <pubTime>2017-11-12T06:41:00.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://fengzhao.me/2017/11/12/javat-ype/</loc>
-    <lastmod>2018-05-08T12:24:51.627Z</lastmod>
-    <data>
-        <display>
-        <title>Java类型信息和反射</title>
-        <pubTime>2017-11-12T06:41:00.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-    
-</urlset>
+    <loc>https://fengzhao.me/2018/06/04/2018-06-04-%E6%B5%85%E8%B0%88MySQL%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</loc>
+    <lastmod>2018-10-30</lastmod>
+  </url>
+</urlset> 

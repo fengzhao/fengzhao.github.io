@@ -2,108 +2,139 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://fengzhao.me/2022/08/22/%E4%B8%80%E4%BA%9B%E7%BB%84%E7%BD%91%E5%B8%B8%E8%AF%86%E5%92%8C%E6%96%B9%E6%B3%95/</loc>
+    <loc>https://fengzhao.me/2022/08/22/2022-08-22-%E4%B8%80%E4%BA%9B%E7%BB%84%E7%BD%91%E5%B8%B8%E8%AF%86%E5%92%8C%E6%96%B9%E6%B3%95/</loc>
     
-    <lastmod>2023-10-17T03:28:58.139Z</lastmod>
+    <lastmod>2023-10-17</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://fengzhao.me/2019/01/14/nginx-logrotation/</loc>
+    <loc>https://fengzhao.me/2019/01/14/2019-01-14-nginx-logrotation/</loc>
     
-    <lastmod>2022-08-22T07:38:12.728Z</lastmod>
+    <lastmod>2022-08-22</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://fengzhao.me/2022/02/22/%E7%90%86%E8%A7%A3HTTPS%E4%B8%AD%E7%9A%84htst/</loc>
+    <loc>https://fengzhao.me/2022/02/22/2022-02-22-%E7%90%86%E8%A7%A3HTTPS%E4%B8%AD%E7%9A%84htst/</loc>
     
-    <lastmod>2022-08-22T03:12:26.642Z</lastmod>
+    <lastmod>2022-08-22</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://fengzhao.me/2018/05/10/DataBaseTransaction/</loc>
+    <loc>https://fengzhao.me/2018/05/10/2018-05-10-DataBaseTransaction/</loc>
     
-    <lastmod>2019-08-15T15:15:16.286Z</lastmod>
+    <lastmod>2019-08-15</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://fengzhao.me/2019/01/03/docker%E5%85%A5%E9%97%A8%E6%A6%82%E8%BF%B0/</loc>
+    <loc>https://fengzhao.me/2019/01/03/2019-01-03-docker%E5%85%A5%E9%97%A8%E6%A6%82%E8%BF%B0/</loc>
     
-    <lastmod>2019-01-13T16:21:22.757Z</lastmod>
+    <lastmod>2019-01-13</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://fengzhao.me/2019/01/03/Docker-compose%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/</loc>
+    <loc>https://fengzhao.me/2019/01/03/2019-01-03-Docker-compose%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/</loc>
     
-    <lastmod>2019-01-03T15:05:54.079Z</lastmod>
+    <lastmod>2019-01-03</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://fengzhao.me/2018/06/04/%E6%B5%85%E8%B0%88MySQL%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</loc>
+    <loc>https://fengzhao.me/2018/06/04/2018-06-04-%E6%B5%85%E8%B0%88MySQL%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</loc>
     
-    <lastmod>2018-10-30T16:43:14.321Z</lastmod>
+    <lastmod>2018-10-30</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://fengzhao.me/about/index.html</loc>
     
-    <lastmod>2018-06-06T04:49:00.501Z</lastmod>
+    <lastmod>2018-06-06</lastmod>
     
-  </url>
-  
-  <url>
-    <loc>https://fengzhao.me/2016/09/25/singleton/</loc>
-    
-    <lastmod>2018-05-08T12:30:58.637Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://fengzhao.me/2017/05/07/python-special-method/</loc>
-    
-    <lastmod>2018-05-08T12:27:00.271Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://fengzhao.me/2016/10/04/2016-10-4-factorypattern/</loc>
-    
-    <lastmod>2018-05-08T12:26:46.642Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://fengzhao.me/2017/11/12/annotation/</loc>
-    
-    <lastmod>2018-05-08T12:25:29.835Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://fengzhao.me/2017/11/12/javat-ype/</loc>
-    
-    <lastmod>2018-05-08T12:24:51.627Z</lastmod>
-    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://fengzhao.me/tags/index.html</loc>
     
-    <lastmod>2018-05-08T06:41:47.211Z</lastmod>
+    <lastmod>2018-05-08</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://fengzhao.me/categories/index.html</loc>
     
-    <lastmod>2018-05-08T04:00:22.292Z</lastmod>
+    <lastmod>2018-05-08</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
+  
+
+  <url>
+    <loc>https://fengzhao.me/</loc>
+    <lastmod>2023-10-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  
+  <url>
+    <loc>https://fengzhao.me/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <lastmod>2023-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://fengzhao.me/tags/docker/</loc>
+    <lastmod>2023-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://fengzhao.me/tags/MySQL/</loc>
+    <lastmod>2023-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://fengzhao.me/tags/HTTPS/</loc>
+    <lastmod>2023-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://fengzhao.me/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
+    <lastmod>2023-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+
   
 </urlset>

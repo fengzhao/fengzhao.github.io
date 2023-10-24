@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+<link rel="preconnect" href="https://fonts.loli.net" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"fengzhao.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Docker 概述Docker是一个开发，运输和运行应用程序的开放平台。 Docker使您可以将应用程序与基础架构分离，以便快速交付软件。使用Docker，您可以像管理应用程序一样管理基础架构。通过利用Docker的方法快速发送，测试和部署代码，您可以显着减少编写代码和在生产中运行代码之间的延迟。 Docker提供了在称为容器的松散隔离环境中打包和运行应用程序的功能。隔离和安全性允许您在给定主机上">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker入门概述">
+<meta property="og:url" content="https://fengzhao.me/2019/01/03/2019-01-03-docker%E5%85%A5%E9%97%A8%E6%A6%82%E8%BF%B0/index.html">
+<meta property="og:site_name" content="FengZhao&#39;s Blog">
+<meta property="og:description" content="Docker 概述Docker是一个开发，运输和运行应用程序的开放平台。 Docker使您可以将应用程序与基础架构分离，以便快速交付软件。使用Docker，您可以像管理应用程序一样管理基础架构。通过利用Docker的方法快速发送，测试和部署代码，您可以显着减少编写代码和在生产中运行代码之间的延迟。 Docker提供了在称为容器的松散隔离环境中打包和运行应用程序的功能。隔离和安全性允许您在给定主机上">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fengzhao.me/engine-components-flow.png">
+<meta property="og:image" content="https://fengzhao.me/docker-architecture.png">
+<meta property="article:published_time" content="2019-01-03T14:48:46.000Z">
+<meta property="article:modified_time" content="2019-01-13T16:21:22.757Z">
+<meta property="article:author" content="fengzhao">
+<meta property="article:tag" content="docker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fengzhao.me/engine-components-flow.png">
+
+
+<link rel="canonical" href="https://fengzhao.me/2019/01/03/2019-01-03-docker%E5%85%A5%E9%97%A8%E6%A6%82%E8%BF%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://fengzhao.me/2019/01/03/2019-01-03-docker%E5%85%A5%E9%97%A8%E6%A6%82%E8%BF%B0/","path":"2019/01/03/2019-01-03-docker入门概述/","title":"docker入门概述"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>docker入门概述 | FengZhao's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="FengZhao's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">FengZhao's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">「年华易逝 懂得珍惜」</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">5</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">0</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">7</span></a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">Docker 概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-%E5%BC%95%E6%93%8E"><span class="nav-number">1.1.</span> <span class="nav-text">Docker 引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker%E6%9E%B6%E6%9E%84"><span class="nav-number">1.2.</span> <span class="nav-text">Docker架构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#docker-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B"><span class="nav-number">1.2.1.</span> <span class="nav-text">docker 守护进程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#docker-%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="nav-number">1.2.2.</span> <span class="nav-text">docker 客户端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Docker-Registry"><span class="nav-number">1.2.3.</span> <span class="nav-text">Docker Registry</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Docker-%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.2.4.</span> <span class="nav-text">Docker 对象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-docker"><span class="nav-number">1.3.</span> <span class="nav-text">安装 docker</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AA-docker-%E5%AE%9E%E4%BE%8B"><span class="nav-number">1.3.1.</span> <span class="nav-text">第一个 docker 实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-docker"><span class="nav-number">1.4.</span> <span class="nav-text">配置 docker</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C-docker"><span class="nav-number">1.4.1.</span> <span class="nav-text">运行 docker</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E5%90%AF%E5%8A%A8"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">直接启动</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">开机启动</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%85%8D%E7%BD%AE"><span class="nav-number">1.4.2.</span> <span class="nav-text">服务端配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE"><span class="nav-number">1.4.3.</span> <span class="nav-text">远程访问</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#docker-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.4.4.</span> <span class="nav-text">docker 命令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-%E5%AF%B9%E8%B1%A1-1"><span class="nav-number">2.</span> <span class="nav-text">Docker 对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%95%9C%E5%83%8F"><span class="nav-number">2.1.</span> <span class="nav-text">镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%95%9C%E5%83%8F%E7%AE%A1%E7%90%86%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">2.1.1.</span> <span class="nav-text">镜像管理常用命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Dockerfile-%E6%9E%84%E5%BB%BA%E9%95%9C%E5%83%8F"><span class="nav-number">2.1.2.</span> <span class="nav-text">Dockerfile 构建镜像</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="fengzhao"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">fengzhao</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://fengzhao.me/2019/01/03/2019-01-03-docker%E5%85%A5%E9%97%A8%E6%A6%82%E8%BF%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="fengzhao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FengZhao's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="docker入门概述 | FengZhao's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          docker入门概述
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-01-03 22:48:46" itemprop="dateCreated datePublished" datetime="2019-01-03T22:48:46+08:00">2019-01-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2019-01-14 00:21:22" itemprop="dateModified" datetime="2019-01-14T00:21:22+08:00">2019-01-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Docker-概述"><a href="#Docker-概述" class="headerlink" title="Docker 概述"></a>Docker 概述</h2><p>Docker是一个开发，运输和运行应用程序的开放平台。 Docker使您可以将应用程序与基础架构分离，以便快速交付软件。使用Docker，您可以像管理应用程序一样管理基础架构。通过利用Docker的方法快速发送，测试和部署代码，您可以显着减少编写代码和在生产中运行代码之间的延迟。</p>
+<p>Docker提供了在称为容器的松散隔离环境中打包和运行应用程序的功能。隔离和安全性允许您在给定主机上同时运行多个容器。容器是轻量级的，因为它们不需要管理程序的额外负载，而是直接在主机内核中运行。这意味着您可以在给定硬件组合上运行比使用虚拟机时更多的容器。您甚至可以在实际虚拟机的主机中运行Docker容器！</p>
+<span id="more"></span>
+
+<p>开发者可以根据配置文件将应用及依赖包放到一个可移植的容器中，然后发布到一定版本以上的任何流行的操作系统上，实现轻量级别的虚拟化。容器完全使用沙箱机制，通过镜像来保证运行环境的一致性，启动速度秒级之内，可以更好的满足云计算的自动化以及弹性扩容等场景。</p>
+<p>Docker 可以在容器内部快速自动化的部署应用，并通过操作系统内核技术( namespaces 、cgroups 等)为容器提供资源隔离与安全保障。<br>Docker 是以 Docker 容器为资源分割和调度的基本单位，封装整个软件运行时环境为开发者和系统管理员设计的，用于构建、发布和运行分布式应用的平台。Docker 是一个跨平台、可移植并且简单易用的容器解决方案。</p>
+<p>关于 Docker 中一些 更详细的描述和定义，可以参考下面这几篇网站：</p>
+<blockquote>
+<p><a href="https://www.docker.com/">https://www.docker.com/</a></p>
+<p><a href="http://guide.daocloud.io/dcs/docker-9153160.html">http://guide.daocloud.io/dcs/docker-9153160.html</a></p>
+<p><a href="https://www.163yun.com/help/documents/158369209000316928">https://www.163yun.com/help/documents/158369209000316928</a></p>
+</blockquote>
+<h3 id="Docker-引擎"><a href="#Docker-引擎" class="headerlink" title="Docker 引擎"></a>Docker 引擎</h3><p>Docker Engine是一个客户端 - 服务器应用程序，包含以下主要组件：</p>
+<ul>
+<li>服务端，是一种长时间运行的程序（守护进程），称为 docker daemon（dockerd命令）。</li>
+<li>REST API 接口，它指定程序可以用来与守护进程通信并指示它做什么的接口。</li>
+<li>客户端命令行（ command line interface）（docker命令）。</li>
+</ul>
+<p><img src="/engine-components-flow.png" alt="engine-components-flow"></p>
+<p>docker 客户端命令或 REST API 可以与服务端通讯，向服务端的守护进程下达指令。</p>
+<p>docker daemon 创建和管理Docker对象，例如镜像，容器，网络和数据卷等。</p>
+<h3 id="Docker架构"><a href="#Docker架构" class="headerlink" title="Docker架构"></a>Docker架构</h3><p>Docker 使用的是 c&#x2F;s 架构，Docker 客户端与 Docker 守护进程通讯，后者负责构建，运行，分发 Docker 容器。Docker 客户端和守护进程可以在同一台机器，也可以用 Docker 客户端连接远端 docker 守护进程。Docker自带的客户端程序是通过 Unix socket 套接字文件来与服务端通讯，Docker 官方也提供了 REST 风格的 API，你也可以开发自己的客户端来使用 HTTP 协议来与服务端通讯。</p>
+<p><img src="/docker-architecture.png" alt="docker-architecture"></p>
+<center>docker架构图</center>
+
+
+
+<h4 id="docker-守护进程"><a href="#docker-守护进程" class="headerlink" title="docker 守护进程"></a>docker 守护进程</h4><p>Docker守护程序（<code>dockerd</code>）监听 Docker API 请求并管理 Docker 对象，如图像，容器，网络和卷。守护程序还可以与其他守护程序通信以管理 Docker 服务。</p>
+<h4 id="docker-客户端"><a href="#docker-客户端" class="headerlink" title="docker 客户端"></a>docker 客户端</h4><p>Docker客户端（<code>docker</code>）是许多 Docker 用户与 Docker 交互的主要方式。当您使用诸如docker run之类的命令时，客户端会将这些命令发送到 <code>dockerd</code> ，后者将其执行。 <code>docker</code> 命令使用 Docker API 。 Docker 客户端可以与多个守护进程通信。</p>
+<h4 id="Docker-Registry"><a href="#Docker-Registry" class="headerlink" title="Docker Registry"></a>Docker Registry</h4><p>Docker Registry 就是一个镜像商店，它里面可以包括各种镜像，可以分为私有仓库和公有仓库（其中 docker hub 最为出名，它是由 docker 公司开发，国内有阿里云等镜像市场）。我们常用的各种开源软件和运行时环境，基本上都可以在 registry 上找到 docker 镜像。</p>
+<p>一个 Docker Registry 中可以包含多个仓库（<code>Repository</code>）；每个仓库可以包含多个标签（<code>Tag</code>）；每个标签对应一个镜像。  </p>
+<blockquote>
+<p>注意：docker registry是镜像站点，仓库是镜像商店内的软件，人们常说的搭建私有仓库，应该理解成搭建私有docker registry。这与 maven 或者其他私有代码仓库的概念有些区别。</p>
+</blockquote>
+<p>通常，一个仓库会包含同一个软件不同版本的镜像，而标签就常用于对应该软件的各个版本。我们可以通过 <code>&lt;仓库名&gt;:&lt;标签&gt;</code> 的格式来指定具体是哪个软件哪个版本的镜像。如果不给出标签，将以 <code>latest</code> 作为默认标签。</p>
+<p>以 <a href="https://store.docker.com/images/ubuntu">Ubuntu 镜像</a> 为例，<code>ubuntu</code> 是仓库的名字，其内包含有不同的版本标签，如，<code>14.04</code>, <code>16.04</code>。我们可以通过 <code>ubuntu:14.04</code>，或者 <code>ubuntu:16.04</code> 来具体指定所需哪个版本的镜像。如果忽略了标签，比如 <code>ubuntu</code>，那将视为 <code>ubuntu:latest</code>。</p>
+<h4 id="Docker-对象"><a href="#Docker-对象" class="headerlink" title="Docker 对象"></a>Docker 对象</h4><p>使用 Docker 时，将会创建和使用镜像，容器，网络，数据卷，插件和其他对象。这些介绍其中一些对象。</p>
+<p>镜像：镜像是一个轻量级，独立的，可执行的软件包，它包括运行这个软件的一切：代码，运行时，系统等。</p>
+<p>容器：容器就是运行启动起来的镜像。同一个镜像可以启动多个，可以简单理解为容器就是镜像的实例化。</p>
+<p>关于容器和镜像的基本概念，可以参考<a href="http://dockone.io/article/6051">这篇文章</a>，我认为这篇文章名副其实，把 docker 的基本概念介绍的非常清楚。</p>
+<h3 id="安装-docker"><a href="#安装-docker" class="headerlink" title="安装 docker"></a>安装 docker</h3><p>docker的安装见官网安装教程：</p>
+<blockquote>
+<p><a href="https://docs.docker.com/install/">https://docs.docker.com/install/</a></p>
+</blockquote>
+<h4 id="第一个-docker-实例"><a href="#第一个-docker-实例" class="headerlink" title="第一个 docker 实例"></a>第一个 docker 实例</h4><p>看完一大堆理论，赶紧去运行你的第一个 docker 容器吧。docker的使用非常方便。 </p>
+<p>一句命令就可以启动 一个 nginx ，感受一下 docker 的方便吧：</p>
+<p>docker run -d -p 8080:80 nginx </p>
+<p>其中 -d 指后台运行，-p 将容器内的 80 端口映射到宿主机的 8080 端口上。</p>
+<p>启动完访问宿主机的 8080 端口，就能见到熟悉的 nginx 欢迎界面了。</p>
+<h3 id="配置-docker"><a href="#配置-docker" class="headerlink" title="配置 docker"></a>配置 docker</h3><h4 id="运行-docker"><a href="#运行-docker" class="headerlink" title="运行 docker"></a>运行 docker</h4><p>安装好 docker 之后，一般 docker 守护进程会自动启动，我们可以通过直接启动或系统服务的方式来启动 docker。</p>
+<h5 id="直接启动"><a href="#直接启动" class="headerlink" title="直接启动"></a>直接启动</h5><p>直接执行 dockerd 命令就可以启动守护进程，它会在前台运行，输出启动日志到终端，使用 ctr+c 命令来停止进程。可以用这种方式来进行测试。</p>
+<h5 id="开机启动"><a href="#开机启动" class="headerlink" title="开机启动"></a>开机启动</h5><p>大多数当前的Linux发行版（RHEL，CentOS，Fedora，Ubuntu 16.04 及更高版本）使用 systemd 工具来管理系统启动时启动的服务。 </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">systemctl <span class="built_in">enable</span> docker  <span class="comment">#开机自启</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">systemctl <span class="built_in">disable</span> docker <span class="comment">#开机自启</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">systemctl start docker   <span class="comment">#启动docker</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">systemctl restart docker <span class="comment">#重启</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">systemctl stop docker    <span class="comment">#重启</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">systemctl status docker  <span class="comment">#查看状态</span></span></span><br></pre></td></tr></table></figure>
+
+<h4 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h4><p>docker 守护进程的配置，有两种方式指定：</p>
+<ul>
+<li>通过在 dockerd 命令后面指定启动参数。</li>
+<li>通过 dockerd  –config-file  来指定一个json 格式的配置文件 （默认在&#x2F;etc&#x2F;docker&#x2F;daemon.json）</li>
+</ul>
+<p>默认地，这个配置文件不存在，系统按照默认配置启动 docker ，如果想自定义，可以创建这个文件。下面是一个简单的示例：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;debug&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;tls&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;tlscert&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/var/docker/server.pem&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;tlskey&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/var/docker/serverkey.pem&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;hosts&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;tcp://192.168.59.3:2376&quot;</span><span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>这个配置文件指定以调试模式启动，开启 TLS 安全传输协议，证书和密钥路径，并监听到 192.168.59.3:2376 。这与下面这个命令是一样的。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dockerd --debug \</span><br><span class="line">  --tls=true \</span><br><span class="line">  --tlscert=/var/docker/server.pem \</span><br><span class="line">  --tlskey=/var/docker/serverkey.pem \</span><br><span class="line">  --host tcp://192.168.59.3:2376</span><br></pre></td></tr></table></figure>
+
+<p>具体的配置选项可以参考 <a href="https://docs.docker.com/engine/reference/commandline/dockerd/">dockerd reference doc</a> 或者使用 dockerd –help来查看。</p>
+<h4 id="远程访问"><a href="#远程访问" class="headerlink" title="远程访问"></a>远程访问</h4><p>docker 守护进程使用 unix, tcp, fd 三种类型的 Socket 通信来监听 <a href="https://docs.docker.com/develop/sdk/">Docker Engine API</a> 。</p>
+<p>默认地，docker 会创建一个 &#x2F;var&#x2F;run&#x2F;docker.sock 文件，它只允许本地的 root 用户来连接，它需要 root 权限，或 docker 用户组。通常我们不建议开启远程访问。</p>
+<p>默认地，docker 没有开启远程访问，如果需要开启远程访问，需要开启 tcp socket 通讯，需要注意的是，默认安装没有启用对服务端访问的加密和认证。也就是说一旦开启远程访问和服务器外网，任何人都可以通过 docker 客户端来访问并控制你的 docker 守护进程来进行创建删除容器等操作。所以必须要开启加密认证或者在守护进程前面加上一个安全的代理。</p>
+<blockquote>
+<p><font color=#FF0000 >注意：不要轻易开放远程访问，如果开放，一定要确认开放对象是可信赖的或者开启访问认证和加密传输。</font></p>
+</blockquote>
+<p>譬如，docker 服务器的内网 ip 是 10.0.0.1，外网 ip 是 45.57.36.48 ，使用 -H tcp:&#x2F;&#x2F;0.0.0.0:2375 来监听的 2375 端口，使用 -H tcp:&#x2F;&#x2F;45.57.36.48:2376 来监听 2376 端口，可以很方便的实现 2375 端口用于非加密访问，2376端口用于加密访问，然后通过防火墙规则限定 2375 端口对指定管理终端开放。</p>
+<p>下面是一个简单的远程访问的例子：</p>
+<p>两台服务器，都安装好 docker ，192.168.1.2 作为服务端开启远程访问。</p>
+<p>服务端配置文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;hosts&quot;: [&quot;tcp://0.0.0.0:2375 &quot;,&quot;unix:///var/run/docker.sock&quot;,&quot;-H fd:// &quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>重新加载服务端配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">systemctl restart docker.service</span></span><br></pre></td></tr></table></figure>
+
+<p>在客户端，有两种方式访问服务端的 docker 服务：</p>
+<ul>
+<li><p>通过 <a href="https://docs.docker.com/engine/api/v1.39/">docker engine web api</a> 连接 server ，访问服务端的 info 接口。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://192.168.1.2:2375/info </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过 docker 客户端命令访问服务端：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker -H tcp://192.168.1.2:2375 info</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>默认地，在客户端执行 docker 命令是连接本地的守护进程，可以修改 DOCKER_HOST 环境变量来改变默认连接：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export DOCKER_HOST=&quot;tcp://192.168.1.2:2375&quot;</span><br></pre></td></tr></table></figure>
+
+<p>通过将 DOCKER_HOST 置空来恢复本地连接：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export DOCKER_HOST=&quot;&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="docker-命令"><a href="#docker-命令" class="headerlink" title="docker 命令"></a>docker 命令</h4><p>docker 命令主要是用来向服务端守护进程发送控制指令，来进行构建镜像，启动容器等一些列操作。它包括一系列子命令。每个子命令都有其单独的选项，查看 docker –help 来看命令概述，通过 docker COMMAND –help 来看子命令详细用法。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">root@fengzhao-linux-server:~# docker --help</span><br><span class="line"></span><br><span class="line">Usage:  docker [OPTIONS] COMMAND</span><br><span class="line"></span><br><span class="line">A self-sufficient runtime for containers</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">      --config string      Location of client config files (default &quot;/root/.docker&quot;)</span><br><span class="line">  -D, --debug              Enable debug mode</span><br><span class="line">  -H, --host list          Daemon socket(s) to connect to</span><br><span class="line">  -l, --log-level string   Set the logging level (&quot;debug&quot;|&quot;info&quot;|&quot;warn&quot;|&quot;error&quot;|&quot;fatal&quot;) (default &quot;info&quot;)</span><br><span class="line">      --tls                Use TLS; implied by --tlsverify</span><br><span class="line">      --tlscacert string   Trust certs signed only by this CA (default &quot;/root/.docker/ca.pem&quot;)</span><br><span class="line">      --tlscert string     Path to TLS certificate file (default &quot;/root/.docker/cert.pem&quot;)</span><br><span class="line">      --tlskey string      Path to TLS key file (default &quot;/root/.docker/key.pem&quot;)</span><br><span class="line">      --tlsverify          Use TLS and verify the remote</span><br><span class="line">  -v, --version            Print version information and quit</span><br><span class="line"></span><br><span class="line">Management Commands:</span><br><span class="line">  config      Manage Docker configs</span><br><span class="line">  container   Manage containers</span><br><span class="line">  image       Manage images</span><br><span class="line">  network     Manage networks</span><br><span class="line">  node        Manage Swarm nodes</span><br><span class="line">  plugin      Manage plugins</span><br><span class="line">  secret      Manage Docker secrets</span><br><span class="line">  service     Manage services</span><br><span class="line">  stack       Manage Docker stacks</span><br><span class="line">  swarm       Manage Swarm</span><br><span class="line">  system      Manage Docker</span><br><span class="line">  trust       Manage trust on Docker images</span><br><span class="line">  volume      Manage volumes</span><br><span class="line"></span><br><span class="line">Commands:</span><br><span class="line">  attach      Attach local standard input, output, and error streams to a running container</span><br><span class="line">  build       Build an image from a Dockerfile</span><br><span class="line">  commit      Create a new image from a container&#x27;s changes</span><br><span class="line">  cp          Copy files/folders between a container and the local filesystem</span><br><span class="line">  create      Create a new container</span><br><span class="line">  diff        Inspect changes to files or directories on a container&#x27;s filesystem</span><br><span class="line">  events      Get real time events from the server</span><br><span class="line">  exec        Run a command in a running container</span><br><span class="line">  export      Export a container&#x27;s filesystem as a tar archive</span><br><span class="line">  history     Show the history of an image</span><br><span class="line">  images      List images</span><br><span class="line">  import      Import the contents from a tarball to create a filesystem image</span><br><span class="line">  info        Display system-wide information</span><br><span class="line">  inspect     Return low-level information on Docker objects</span><br><span class="line">  kill        Kill one or more running containers</span><br><span class="line">  load        Load an image from a tar archive or STDIN</span><br><span class="line">  login       Log in to a Docker registry</span><br><span class="line">  logout      Log out from a Docker registry</span><br><span class="line">  logs        Fetch the logs of a container</span><br><span class="line">  pause       Pause all processes within one or more containers</span><br><span class="line">  port        List port mappings or a specific mapping for the container</span><br><span class="line">  ps          List containers</span><br><span class="line">  pull        Pull an image or a repository from a registry</span><br><span class="line">  push        Push an image or a repository to a registry</span><br><span class="line">  rename      Rename a container</span><br><span class="line">  restart     Restart one or more containers</span><br><span class="line">  rm          Remove one or more containers</span><br><span class="line">  rmi         Remove one or more images</span><br><span class="line">  run         Run a command in a new container</span><br><span class="line">  save        Save one or more images to a tar archive (streamed to STDOUT by default)</span><br><span class="line">  search      Search the Docker Hub for images</span><br><span class="line">  start       Start one or more stopped containers</span><br><span class="line">  stats       Display a live stream of container(s) resource usage statistics</span><br><span class="line">  stop        Stop one or more running containers</span><br><span class="line">  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE</span><br><span class="line">  top         Display the running processes of a container</span><br><span class="line">  unpause     Unpause all processes within one or more containers</span><br><span class="line">  update      Update configuration of one or more containers</span><br><span class="line">  version     Show the Docker version information</span><br><span class="line">  wait        Block until one or more containers stop, then print their exit codes</span><br><span class="line"></span><br><span class="line">Run &#x27;docker COMMAND --help&#x27; for more information on a command.</span><br><span class="line">root@fengzhao-linux-server:~#</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>下面是一些常见的 docker 命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker --<span class="built_in">help</span>  <span class="comment">#查看帮助</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker version <span class="comment">#查看版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker pull image <span class="comment">#下载镜像</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker image <span class="built_in">ls</span> <span class="comment"># 列出所有镜像</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker run image <span class="comment">#从镜像启动一个新的容器</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker ps  <span class="comment">#查看运行中的容器，-a 查看所有容器</span></span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Docker-对象-1"><a href="#Docker-对象-1" class="headerlink" title="Docker 对象"></a>Docker 对象</h2><h3 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h3><p>docker 镜像的概念，前面已经大致讲过，这里不再赘述，镜像的构建，一般会基于某个父镜像去构建。镜像的构建方法一般有三种方式：</p>
+<ul>
+<li>通过一个 Dockerfile 文件来描述镜像中的内容和操作，然后用 docker build 命令构建镜像。</li>
+<li>启动一个容器后，在容器中通过一些基本操作做出改变后，用 docker commit 将容器提交为镜像。</li>
+<li>按上述之一方式做好镜像后，推送到镜像仓库，下次使用时，可以直接从镜像仓库拉取到本地。</li>
+</ul>
+<p>举个例子，我们在一台新电脑上安装操作系统时，主要步骤是去微软官网下载 windows iso 镜像，然后刻录到U盘，然后去电脑上安装，然后自己去安装各种开发环境，和常用软件。我们可以在安装好软件后，通过工具创建镜像，这样下次通过自己制作的镜像安装操作系统，就会自带这些额外的软件，这就是第二种方式。但是有人认为制作镜像还是要手工安装软件比较麻烦。于是写了一个文件，里面包含安装开发环境和常用软件的指令，执行这个文件就会自动创建自己制作的镜像，这就是第一种方式，这个文件就是 Dockerfile。</p>
+<p>通常，使用 Dockerfile 文件来构建镜像是比较多的做法。Dockerfile 中有一系列指令来构建镜像。</p>
+<p>docker 镜像的命名空间主要是 Registry&#x2F;Users&#x2F;Repository&#x2F;Tag，分别表示 Registry地址&#x2F;用户空间&#x2F;仓库名称&#x2F;标签。</p>
+<p>默认地的  Registry 是 dockerhub ，如果通过 docker image ls 查看到某个镜像没有 Registry ，那就是来自docker hub。</p>
+<p>一些大型软件 在docker hub 上的镜像，都是由官方（docker 官方或软件发行官方）维护，在 <a href="https://hub.docker.com/">docker hub</a>上搜索可以看到 official 字样，这类镜像，一般没有用户名称，或者其名称为 library 。</p>
+<p>主要分为以下几种情况</p>
+<ol>
+<li>docker hub 上的官方镜像为默认Registry    ubuntu:16.04</li>
+<li>docker hub 上用户空间下的镜像   fengzhao&#x2F;nginx:latest</li>
+<li>私有 docker registry上的镜像   hub.mycompany.com&#x2F;dev&#x2F;nginx:latest</li>
+</ol>
+<p>列出所有镜像：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">root@fengzhao-linux-server:~# docker image ls</span><br><span class="line">root@fengzhao-linux-server:~# docker image ls</span><br><span class="line">REPOSITORY                       TAG        IMAGE ID         CREATED             SIZE</span><br><span class="line">nginx                           latest      62f816a209e6     2 months ago        109MB</span><br><span class="line">hub.demo.com/fengzhao/nginx     latest      62f816a209e6     2 months ago        109MB</span><br><span class="line">chinafengzhao/nginx             v1.0        62f816a209e6     2 months ago        109MB</span><br><span class="line">root@fengzhao-linux-server:~#</span><br><span class="line">root@fengzhao-linux-server:~#</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">这些，其实都是同一个镜像，只是不同的引用而已，因为他们</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">第一个是官方的nginx镜像，</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">第二个是给官方镜像打了新标签，可以通过 docker pull 推到自己本地的 docker Registry 中。</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">第三个是给官方镜像打了用户空间（并带版本号），可以推到 dockerhub 中的 chinafengzhao 用户空间下。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>每个镜像，下载到当前服务器内，都有一个镜像 id来唯一标识这个镜像，我们可以给同一个镜像打多个标签，用来做镜像版本管理，使用 docker tag 命令来给镜像打标签：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG] <span class="comment">#给镜像打一个标签</span></span> </span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker  image <span class="built_in">rm</span> Registry/Users/Repository/Tag   <span class="comment">#移除某个标签，当最后一个时</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">当某个镜像的Registry/Users/Repository/Tag均为空时，无法引用这个镜像，成为虚悬镜像。</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">产生虚悬镜像的原因，从 Registry 拉取3.2版本的镜像，然后 Registry 重新制作3.2版本的镜像，然后你再＃拉这个镜像，这样最开始的那个3.2的镜像的REPOSITORY和TAG都被置空，无法引用</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker prune <span class="comment"># 删除虚悬镜像</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker image <span class="built_in">ls</span> -f dangling=<span class="literal">true</span> <span class="comment"># 列出所有虚悬镜像</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="镜像管理常用命令"><a href="#镜像管理常用命令" class="headerlink" title="镜像管理常用命令"></a>镜像管理常用命令</h4><p>docker image COMMAND 是镜像管理的基本命令，可以通过帮助命令，逐层查看其所有的子命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">root@fengzhao-linux-server:~# docker image --help</span><br><span class="line"></span><br><span class="line">Usage:  docker image COMMAND</span><br><span class="line"></span><br><span class="line">Manage images</span><br><span class="line"></span><br><span class="line">Commands:</span><br><span class="line">  build       Build an image from a Dockerfile</span><br><span class="line">  history     Show the history of an image</span><br><span class="line">  import      Import the contents from a tarball to create a filesystem image</span><br><span class="line">  inspect     Display detailed information on one or more images</span><br><span class="line">  load        Load an image from a tar archive or STDIN</span><br><span class="line">  ls          List images</span><br><span class="line">  prune       Remove unused images</span><br><span class="line">  pull        Pull an image or a repository from a registry</span><br><span class="line">  push        Push an image or a repository to a registry</span><br><span class="line">  rm          Remove one or more images</span><br><span class="line">  save        Save one or more images to a tar archive (streamed to STDOUT by default)</span><br><span class="line">  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE</span><br><span class="line"></span><br><span class="line">Run &#x27;docker image COMMAND --help&#x27; for more information on a command.</span><br><span class="line">root@fengzhao-linux-server:~#</span><br></pre></td></tr></table></figure>
+
+
+
+<p>下面仅列举一些常用的 docker 镜像管理命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker pull  Registry/Users/Repository/Tag <span class="comment"># 从registry上拉取镜像，私有的可能需要docker login认证</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker image <span class="built_in">ls</span> <span class="comment"># 列出所有镜像</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker rmi  45fb1e3aa  <span class="comment"># 删除这个id的镜像，参数可以是id，也可以是repoistry+tag，</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker tag busybox:latest  fengzhao/busybox:latest  <span class="comment"># 给镜像添加额外的标签</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker</span> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Dockerfile-构建镜像"><a href="#Dockerfile-构建镜像" class="headerlink" title="Dockerfile 构建镜像"></a>Dockerfile 构建镜像</h4><p>Dockerfile 是由一系列命令和参数构成的脚本文件，一个 Dockerfile 里面包含了构建整个 image 的完整命令。Docker 通过 docker build 执行 Dockerfile 中的一系列命令自动构建 image 。</p>
+<p>通过 docker build 命令来从 Dockerfile 和下文中构建镜像，上下文一般就是 Dockerfile 文件所在的路径， 其中包含一系列制作镜像的所需的原文件，上下文可以在某个路径，或者是某个 URL （一般是git repo，不建议用 URL）中。上下文会被递归处理，所以路径下可以包含子目录。</p>
+<p>Dockerfile 包含一系列指令，它必须以 FROM 作为第一行，表示基于某个父镜像构建。</p>
+<p>构建过程是 docker daemon 来执行的，第一件事就是把整个上下文传给 daemon 。在多数情况下，创建一个空文件夹来存放 Dockerfile 和构建镜像所需的文件。把这个文件夹作为上下文。可以在任何位置执行 docker build 构建镜像，通过 -f 选项来指定 Dockerfile 文件。</p>
+<blockquote>
+<p><code>警告</code>：不要使用根目录<code>/</code>作为上下文，因为它会导致构建将硬盘中的所有内容传输到Docker守护进程。</p>
+</blockquote>
+<p>下面是一个 nginx 的 Dockerfile 文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">/data/docker/nginx/Dockerfile</span></span><br><span class="line">FROM ubuntu:12.04</span><br><span class="line">MAINTAINER fengzhao &lt;fengzhao1124@hotmail.com&gt;</span><br><span class="line">RUN apt-get update</span><br><span class="line">RUN apt-get -y install nginx</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">put my <span class="built_in">local</span> site to /var/www</span></span><br><span class="line">ADD index.html /var/www/html/</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">expose httpd port</span></span><br><span class="line">EXPOSE 80</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">the <span class="built_in">command</span> to run</span></span><br><span class="line">CMD [&quot;/usr/sbin/nginx&quot;]</span><br></pre></td></tr></table></figure>
+
+<p>通过 docker build 命令来构建镜像：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> /data/docker/nginx/</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker build -t chinafengzhao/nginx:1.0.2 -t shykes/myapp:latest .</span> </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">. 表示 Dockerfile 文件所在目录，当前构建的上下文。也可以用 -f /path/Dockerfile 来指定构建路径</span></span><br></pre></td></tr></table></figure>
+
+<p>关于 docker build 命令的详细用法，可以查看帮助：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">root@fengzhao-linux-server:~#</span><br><span class="line">root@fengzhao-linux-server:~#</span><br><span class="line">root@fengzhao-linux-server:~# docker build --help</span><br><span class="line"></span><br><span class="line">Usage:  docker build [OPTIONS] PATH | URL | -</span><br><span class="line"></span><br><span class="line">Build an image from a Dockerfile</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">      --add-host list           Add a custom host-to-IP mapping (host:ip)</span><br><span class="line">      --build-arg list          Set build-time variables</span><br><span class="line">      --cache-from strings      Images to consider as cache sources</span><br><span class="line">      --cgroup-parent string    Optional parent cgroup for the container</span><br><span class="line">      --compress                Compress the build context using gzip</span><br><span class="line">      --cpu-period int          Limit the CPU CFS (Completely Fair Scheduler) period</span><br><span class="line">      --cpu-quota int           Limit the CPU CFS (Completely Fair Scheduler) quota</span><br><span class="line">  -c, --cpu-shares int          CPU shares (relative weight)</span><br><span class="line">      --cpuset-cpus string      CPUs in which to allow execution (0-3, 0,1)</span><br><span class="line">      --cpuset-mems string      MEMs in which to allow execution (0-3, 0,1)</span><br><span class="line">      --disable-content-trust   Skip image verification (default true)</span><br><span class="line">  -f, --file string             Name of the Dockerfile (Default is &#x27;PATH/Dockerfile&#x27;)</span><br><span class="line">      --force-rm                Always remove intermediate containers</span><br><span class="line">      --iidfile string          Write the image ID to the file</span><br><span class="line">      --isolation string        Container isolation technology</span><br><span class="line">      --label list              Set metadata for an image</span><br><span class="line">  -m, --memory bytes            Memory limit</span><br><span class="line">      --memory-swap bytes       Swap limit equal to memory plus swap: &#x27;-1&#x27; to enable unlimited swap</span><br><span class="line">      --network string          Set the networking mode for the RUN instructions during build (default &quot;default&quot;)</span><br><span class="line">      --no-cache                Do not use cache when building the image</span><br><span class="line">      --pull                    Always attempt to pull a newer version of the image</span><br><span class="line">  -q, --quiet                   Suppress the build output and print image ID on success</span><br><span class="line">      --rm                      Remove intermediate containers after a successful build (default true)</span><br><span class="line">      --security-opt strings    Security options</span><br><span class="line">      --shm-size bytes          Size of /dev/shm</span><br><span class="line">  -t, --tag list                Name and optionally a tag in the &#x27;name:tag&#x27; format</span><br><span class="line">      --target string           Set the target build stage to build.</span><br><span class="line">      --ulimit ulimit           Ulimit options (default [])</span><br><span class="line">root@fengzhao-linux-server:~#</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>fengzhao
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://fengzhao.me/2019/01/03/2019-01-03-docker%E5%85%A5%E9%97%A8%E6%A6%82%E8%BF%B0/" title="docker入门概述">https://fengzhao.me/2019/01/03/2019-01-03-docker入门概述/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/docker/" rel="tag"># docker</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/06/04/2018-06-04-%E6%B5%85%E8%B0%88MySQL%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" rel="prev" title="浅谈MySQL日志文件系统">
+                  <i class="fa fa-angle-left"></i> 浅谈MySQL日志文件系统
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/01/03/2019-01-03-Docker-compose%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" rel="next" title="Docker-compose简明教程">
+                  Docker-compose简明教程 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2016 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">fengzhao</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/fengzhao" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

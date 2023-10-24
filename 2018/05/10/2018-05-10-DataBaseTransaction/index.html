@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+<link rel="preconnect" href="https://fonts.loli.net" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"fengzhao.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="数据库事务 数据库事务(Database Transaction)，一般是指要做的或所做的事情。在计算机术语中是指访问并可能更新数据库中各种数据项的一个程序执行单元(unit)。  一个数据库事务通常包含了一个序列的对数据库的读&#x2F;写操作。它的存在包含有以下两个目的：   为数据库操作序列提供了一个从失败中恢复到正常状态的方法，同时提供了数据库即使在异常状态下仍能保持一致性的方法。当多个应">
+<meta property="og:type" content="article">
+<meta property="og:title" content="理解数据库事务和锁">
+<meta property="og:url" content="https://fengzhao.me/2018/05/10/2018-05-10-DataBaseTransaction/index.html">
+<meta property="og:site_name" content="FengZhao&#39;s Blog">
+<meta property="og:description" content="数据库事务 数据库事务(Database Transaction)，一般是指要做的或所做的事情。在计算机术语中是指访问并可能更新数据库中各种数据项的一个程序执行单元(unit)。  一个数据库事务通常包含了一个序列的对数据库的读&#x2F;写操作。它的存在包含有以下两个目的：   为数据库操作序列提供了一个从失败中恢复到正常状态的方法，同时提供了数据库即使在异常状态下仍能保持一致性的方法。当多个应">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-05-10T03:39:47.000Z">
+<meta property="article:modified_time" content="2019-08-15T15:15:16.286Z">
+<meta property="article:author" content="fengzhao">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://fengzhao.me/2018/05/10/2018-05-10-DataBaseTransaction/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://fengzhao.me/2018/05/10/2018-05-10-DataBaseTransaction/","path":"2018/05/10/2018-05-10-DataBaseTransaction/","title":"理解数据库事务和锁"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>理解数据库事务和锁 | FengZhao's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="FengZhao's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">FengZhao's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">「年华易逝 懂得珍惜」</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">5</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">0</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">7</span></a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1"><span class="nav-number">1.</span> <span class="nav-text">数据库事务</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1%E7%89%B9%E6%80%A7"><span class="nav-number">1.1.</span> <span class="nav-text">事务特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1%E4%B8%BE%E4%BE%8B"><span class="nav-number">1.2.</span> <span class="nav-text">事务举例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E5%AD%90%E6%80%A7%EF%BC%9A"><span class="nav-number">1.2.1.</span> <span class="nav-text">原子性：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E8%87%B4%E6%80%A7"><span class="nav-number">1.2.2.</span> <span class="nav-text">一致性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%94%E7%A6%BB%E6%80%A7"><span class="nav-number">1.2.3.</span> <span class="nav-text">隔离性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%81%E4%B9%85%E6%80%A7"><span class="nav-number">1.2.4.</span> <span class="nav-text">持久性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%BB%E7%8E%B0%E8%B1%A1"><span class="nav-number">2.</span> <span class="nav-text">数据库读现象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%84%8F%E8%AF%BB"><span class="nav-number">2.1.</span> <span class="nav-text">脏读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%8F%AF%E9%87%8D%E5%A4%8D%E8%AF%BB"><span class="nav-number">2.2.</span> <span class="nav-text">不可重复读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%BB%E8%AF%BB"><span class="nav-number">2.3.</span> <span class="nav-text">幻读</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6"><span class="nav-number">3.</span> <span class="nav-text">数据库并发控制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6"><span class="nav-number">3.1.</span> <span class="nav-text">并发控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9A%94%E7%A6%BB"><span class="nav-number">3.2.</span> <span class="nav-text">数据库隔离</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%81"><span class="nav-number">3.3.</span> <span class="nav-text">锁</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%81%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">3.3.1.</span> <span class="nav-text">锁的分类</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="fengzhao"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">fengzhao</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://fengzhao.me/2018/05/10/2018-05-10-DataBaseTransaction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="fengzhao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FengZhao's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="理解数据库事务和锁 | FengZhao's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          理解数据库事务和锁
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-05-10 11:39:47" itemprop="dateCreated datePublished" datetime="2018-05-10T11:39:47+08:00">2018-05-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2019-08-15 23:15:16" itemprop="dateModified" datetime="2019-08-15T23:15:16+08:00">2019-08-15</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="数据库事务"><a href="#数据库事务" class="headerlink" title="数据库事务"></a>数据库事务</h1><blockquote>
+<p>数据库事务(Database Transaction)，一般是指要做的或所做的事情。在计算机术语中是指访问并可能更新数据库中各种数据项的一个程序执行单元(unit)。</p>
+</blockquote>
+<p>一个数据库事务通常包含了一个序列的对数据库的读&#x2F;写操作。它的存在包含有以下两个目的：</p>
+<blockquote>
+<ul>
+<li>为数据库操作序列提供了一个从失败中恢复到正常状态的方法，同时提供了数据库即使在异常状态下仍能保持一致性的方法。<br>当多个应用程序在并发访问数据库时，可以在这些应用程序之间提供一个隔离方法，以防止彼此的操作互相干扰。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>当事务被提交给了DBMS（数据库管理系统），则DBMS（数据库管理系统）需要确保该事务中的所有操作都成功完成且其结果被永久保存在数据库中，如果事务中有的操作没有成功完成，则事务中的所有操作都需要被回滚，回到事务执行前的状态；同时，该事务对数据库或者其他事务的执行无影响，所有的事务都好像在独立的运行。</li>
+</ul>
+</blockquote>
+<span id="more"></span>
+
+<p>但在现实情况下，失败的风险很高。在一个数据库事务的执行过程中，有可能会遇上事务操作失败、数据库系统&#x2F;操作系统失败，甚至是存储介质失败等情况。这便需要DBMS对一个执行失败的事务执行恢复操作，将其数据库状态恢复到一致状态（数据的一致性得到保证的状态）	。为了实现将数据库状态恢复到一致状态的功能，DBMS通常需要维护事务日志以追踪事务中所有影响数据库数据的操作。</p>
+<h2 id="事务特性"><a href="#事务特性" class="headerlink" title="事务特性"></a>事务特性</h2><p>并非任意的对数据库的操作序列都是数据库事务。数据库事务拥有以下四个特性，习惯上被称之为ACID特性。</p>
+<blockquote>
+<ul>
+<li>原子性（Atomicity）：事务作为一个整体被执行，包含在其中的对数据库的操作要么全部被执行，要么都不执行。</li>
+<li>一致性（Consistency）：事务应确保数据库的状态从一个一致状态转变为另一个一致状态。一致状态的含义是数据库中的数据应满足完整性约束。</li>
+<li>隔离性（Isolation）：多个事务并发执行时，一个事务的执行不应影响其他事务的执行。</li>
+<li>持久性（Durability）：已被提交的事务对数据库的修改应该永久保存在数据库中。</li>
+</ul>
+</blockquote>
+<h2 id="事务举例"><a href="#事务举例" class="headerlink" title="事务举例"></a>事务举例</h2><p>用一个常用的“A账户向B账号汇钱”的例子来说明如何通过数据库事务保证数据的准确性和完整性。熟悉关系型数据库事务的都知道从帐号A到帐号B需要6个操作：</p>
+<p>1、从A账号中把余额读出来（500）。</br><br>2、对A账号做减法操作（500-100）。</br><br>3、把结果写回A账号中（400）。</br><br>4、从B账号中把余额读出来（500）。</br><br>5、对B账号做加法操作（500+100）。</br><br>6、把结果写回B账号中（600）。</br></p>
+<h3 id="原子性："><a href="#原子性：" class="headerlink" title="原子性："></a>原子性：</h3><p>保证1-6所有过程要么都执行，要么都不执行。一旦在执行某一步骤的过程中发生问题，就需要执行回滚操作。 假如执行到第五步的时候，B账户突然不可用（比如被注销），那么之前的所有操作都应该回滚到执行事务之前的状态。</p>
+<h3 id="一致性"><a href="#一致性" class="headerlink" title="一致性"></a>一致性</h3><p>在转账之前，A和B的账户中共有500+500&#x3D;1000元钱。在转账之后，A和B的账户中共有400+600&#x3D;1000元。也就是说，数据的状态在执行该事务操作之后从一个状态改变到了另外一个状态。同时一致性还能保证账户余额不会变成负数等。</p>
+<h3 id="隔离性"><a href="#隔离性" class="headerlink" title="隔离性"></a>隔离性</h3><p>在A向B转账的整个过程中，只要事务还没有提交（commit），查询A账户和B账户的时候，两个账户里面的钱的数量都不会有变化。<br>如果在A给B转账的同时，有另外一个事务执行了C给B转账的操作，那么当两个事务都结束的时候，B账户里面的钱应该是A转给B的钱加上C转给B的钱再加上自己原有的钱。</p>
+<h3 id="持久性"><a href="#持久性" class="headerlink" title="持久性"></a>持久性</h3><p>一旦转账成功（事务提交），两个账户的里面的钱就会真的发生变化（会把数据写入数据库做持久化保存）。</p>
+<h1 id="数据库读现象"><a href="#数据库读现象" class="headerlink" title="数据库读现象"></a>数据库读现象</h1><p>“读现象”是多个事务并发执行时，在读取数据方面可能碰到的状况。先了解它们有助于理解各隔离级别的含义。其中包括脏读、不可重复读和幻读。</p>
+<h2 id="脏读"><a href="#脏读" class="headerlink" title="脏读"></a>脏读</h2><p>脏读是指在数据库访问中，当一个事务A正在访问数据，并且对数据进行了修改，而这种修改还没有提交到数据库中，这时，另外一个事务B也访问这个数据，然后使用了这个数据。然后A又进行回滚操作，则事务B访问的数据是无效的。即上述转账例子中，转账事务进行到一半的时候，此时另外一个事务去读了A账号的余额，然后转账事务回滚，A的余额变回以前的值。此时后面读余额的事务即为脏读。</p>
+<h2 id="不可重复读"><a href="#不可重复读" class="headerlink" title="不可重复读"></a>不可重复读</h2><p>不可重复读，即在一个事务中分多次读同一数据，但是在前后两次读取之间,另外一个事务也在访问该数据，可能进行了修改，这样就造成了第一次事务的前后两次读取的数据不一致的现象。例如，一个编辑人员两次读取同一文档，但在两次读取之间，作者重写了该文档。当编辑人员第二次读取文档时，文档已更改。原始读取不可重复。如果只有在作者全部完成编写后编辑人员才可以读取文档，则可以避免该问题。</p>
+<h2 id="幻读"><a href="#幻读" class="headerlink" title="幻读"></a>幻读</h2><p>幻读与不可重复读之间很容易让人混淆。举一个简单的例子来理解一下幻读：</br></p>
+<p>users： id 主键</p>
+<p>1、事务A：select * from users where id &#x3D; 1;</br><br>2、事务B：insert into <code>users</code>(<code>id</code>, <code>name</code>) values (1, ‘big cat’);</br><br>3、事务A：insert into <code>users</code>(<code>id</code>, <code>name</code>) values (1, ‘big cat’);</br></p>
+<blockquote>
+<p>A ：主事务，检测表中是否有 id 为 1 的记录，没有则插入，这是我们期望的正常业务逻辑。<br>B ：干扰事务，目的在于扰乱 T1 的正常的事务执行。</br></p>
+</blockquote>
+<p>关于这种现象，可以称之为幻读。在mysql中，关于这两个事务，可能会有两个结果，A全部B失败，或者B成功A失败。这取决于数据库的不同隔离级别。</p>
+<p>例如，在 RR 隔离级别下，1、2是正常执行的，3则会报主键冲突，对于A事务的业务是执行失败的，这里事务A就发生了幻读，因为它读取的数据状态不能满足它的下一步业务。</p>
+<h1 id="数据库并发控制"><a href="#数据库并发控制" class="headerlink" title="数据库并发控制"></a>数据库并发控制</h1><h2 id="并发控制"><a href="#并发控制" class="headerlink" title="并发控制"></a>并发控制</h2><blockquote>
+<p> 在计算机科学，特别是程序设计、操作系统、多处理机和数据库等领域，并发控制（Concurrency control）是确保及时纠正由并发操作导致的错误的一种机制。</p>
+</blockquote>
+<p>我们都知道事务的几种性质，数据库为了维护这些性质，尤其是一致性和隔离性，一般使用加锁这种方式。同时数据库又是个高并发的应用，同一时间会有大量的并发访问，如果加锁过度，会极大的降低并发处理能力。所以对于加锁的处理，可以说就是数据库对于事务处理的精髓所在。</p>
+<p>数据库管理系统（DBMS）中的并发控制的任务是确保在多个事务同时存取数据库中同一数据时不破坏事务的隔离性和统一性以及数据库的统一性。前面关于事务的概念以及读现象举的例子其实都是并发的场景。再举例讨论一个实际场景中的例子：两个火车票代售点，同时读取12306数据库中的某趟列车的车票数量为X，然后同时卖出一张票，然后同时提交了X-1到数据库中，这样就造成了卖了两张票，而库中记录只减了一张。生这种情况的原因是因为两个事务读入同一数据并同时修改，其中一个事务提交的结果破坏了另一个事务提交的结果，导致其数据的修改被丢失，破坏了事务的隔离性。并发控制要解决的就是这类问题。</p>
+<h2 id="数据库隔离"><a href="#数据库隔离" class="headerlink" title="数据库隔离"></a>数据库隔离</h2><p>在DBMS中，事务保证了一个操作序列可以全部都执行或者全部都不执行（原子性），从一个状态转变到另外一个状态（一致性）。由于事务满足久性。所以一旦事务被提交之后，数据就能够被持久化下来，又因为事务是满足隔离性的，所以，当多个事务同时处理同一个数据的时候，多个事务直接是互不影响的，所以，在多个事务并发操作的过程中，如果控制不好隔离级别，就有可能产生脏读、不可重复读或者幻读等读现象。</p>
+<p>ANSI&#x2F;ISO SQL定义的标准隔离级别有四种，从高到底依次为：可序列化(Serializable)、可重复读(Repeatable reads)、提交读(Read committed)、未提交读(Read uncommitted)。</br></p>
+<table>
+<thead>
+<tr>
+<th align="left">隔离级别</th>
+<th align="left">脏读（Dirty Read）</th>
+<th align="left">不可重复读（NonRepeatable Read）</th>
+<th align="left">幻读（Phantom Read）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">未提交读（Read uncommitted）</td>
+<td align="left">可能</td>
+<td align="left">可能</td>
+<td align="left">可能</td>
+</tr>
+<tr>
+<td align="left">已提交读（Read committed）</td>
+<td align="left">不可能</td>
+<td align="left">可能</td>
+<td align="left">可能</td>
+</tr>
+<tr>
+<td align="left">可重复读（Repeatable read）</td>
+<td align="left">不可能</td>
+<td align="left">不可能</td>
+<td align="left">可能</td>
+</tr>
+<tr>
+<td align="left">可串行化（Serializable ）</td>
+<td align="left">不可能</td>
+<td align="left">不可能</td>
+<td align="left">不可能</td>
+</tr>
+</tbody></table>
+<blockquote>
+<ul>
+<li>未提交读(Read Uncommitted)：允许脏读，也就是可能读取到其他会话中未提交事务修改的数据</li>
+<li>提交读(Read Committed)：只能读取到已经提交的数据。Oracle等多数数据库默认都是该级别 (不重复读)</li>
+<li>可重复读(Repeated Read)：可重复读。在同一个事务内的查询都是事务开始时刻一致的，InnoDB默认级别。 在SQL标准中，该隔离级别消除了不可重复读，但是还存在幻象读</li>
+<li>串行读(Serializable)：完全串行化的读，每次读都需要获得表级共享锁，读写相互都会阻塞</li>
+</ul>
+</blockquote>
+<h2 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h2><p>当并发事务同时访问一个资源时，有可能导致数据不一致，因此需要一种机制来将数据访问顺序化，以保证数据库数据的一致性。锁就是其中的一种机制。可以简单理解为当某个事务在操作开始时，锁定某一个对象，在这个事务操作结束之前，不允许其他事务操作这个对象。下面是常见的锁分类：</p>
+<h3 id="锁的分类"><a href="#锁的分类" class="headerlink" title="锁的分类"></a>锁的分类</h3><p>1、按照锁定的对象的粒度划分：表级锁、行级锁、页级锁（mysql）</br><br>2、按锁级别划分：共享锁（shared lock，读锁，shared lock）、排他锁（exclusive lock，写锁，write lock）</br><br>3、按使用方式划分，可分为乐观锁、悲观锁</br></p>
+<p>各种锁的比较：</p>
+<blockquote>
+<ul>
+<li>表级锁：开销小，加锁快；不会出现死锁；锁定粒度大，发生锁冲突的概率最高,并发度最低。</li>
+<li>行级锁：开销大，加锁慢；会出现死锁；锁定粒度最小，发生锁冲突的概率最低,并发度也最高。</li>
+<li>页面锁：开销和加锁时间界于表锁和行锁之间；会出现死锁；锁定粒度界于表锁和行锁之间，并发度一般。</li>
+</ul>
+</blockquote>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
+<p>淘宝MySQL博客 <a href="http://mysql.taobao.org/monthly/2016/01/01/">http://mysql.taobao.org/monthly/2016/01/01/</a> </br><br>美团点评技术团队 <a href="https://tech.meituan.com/innodb-lock.html">https://tech.meituan.com/innodb-lock.html</a></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>fengzhao
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://fengzhao.me/2018/05/10/2018-05-10-DataBaseTransaction/" title="理解数据库事务和锁">https://fengzhao.me/2018/05/10/2018-05-10-DataBaseTransaction/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 数据库</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/06/04/2018-06-04-%E6%B5%85%E8%B0%88MySQL%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" rel="next" title="浅谈MySQL日志文件系统">
+                  浅谈MySQL日志文件系统 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2016 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">fengzhao</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/fengzhao" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
