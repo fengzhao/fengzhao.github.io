@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /home
-Allow: /about
-Allow: /tags/
-Allow: /archives/
-Sitemap: https://fengzhao.me/sitemap.xml,https://fengzhao.me/baidusitemap.xml

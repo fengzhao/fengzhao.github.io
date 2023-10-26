@@ -3,22 +3,20 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
-<link rel="preconnect" href="https://fonts.loli.net" crossorigin>
-<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
 
 <link rel="stylesheet" href="/css/main.css">
 
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/animate.css/3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://unpkg.zhimg.com/pace-js@1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://unpkg.zhimg.com/pace-js@1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-
-<script class="next-config" data-name="main" type="application/json">{"hostname":"fengzhao.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"fengzhao.me","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="Docker 概述Docker是一个开发，运输和运行应用程序的开放平台。 Docker使您可以将应用程序与基础架构分离，以便快速交付软件。使用Docker，您可以像管理应用程序一样管理基础架构。通过利用Docker的方法快速发送，测试和部署代码，您可以显着减少编写代码和在生产中运行代码之间的延迟。 Docker提供了在称为容器的松散隔离环境中打包和运行应用程序的功能。隔离和安全性允许您在给定主机上">
 <meta property="og:type" content="article">
@@ -86,6 +84,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -94,11 +93,37 @@
 
 <nav class="site-nav">
   <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">5</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">0</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">7</span></a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </header>
         
@@ -144,8 +169,19 @@
       </div>
   </nav>
 </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/fengzhao" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fengzhao" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:fengzhao1124@gmail.com" title="E-Mail → mailto:fengzhao1124@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="Rss feed → &#x2F;atom.xml" rel="noopener me"><i class="fa fa-rss fa-fw"></i>Rss feed</a>
+      </span>
+  </div>
   <div class="cc-license animated" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://unpkg.zhimg.com/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
   </div>
 
         </div>
@@ -269,7 +305,12 @@
 <h3 id="配置-docker"><a href="#配置-docker" class="headerlink" title="配置 docker"></a>配置 docker</h3><h4 id="运行-docker"><a href="#运行-docker" class="headerlink" title="运行 docker"></a>运行 docker</h4><p>安装好 docker 之后，一般 docker 守护进程会自动启动，我们可以通过直接启动或系统服务的方式来启动 docker。</p>
 <h5 id="直接启动"><a href="#直接启动" class="headerlink" title="直接启动"></a>直接启动</h5><p>直接执行 dockerd 命令就可以启动守护进程，它会在前台运行，输出启动日志到终端，使用 ctr+c 命令来停止进程。可以用这种方式来进行测试。</p>
 <h5 id="开机启动"><a href="#开机启动" class="headerlink" title="开机启动"></a>开机启动</h5><p>大多数当前的Linux发行版（RHEL，CentOS，Fedora，Ubuntu 16.04 及更高版本）使用 systemd 工具来管理系统启动时启动的服务。 </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">systemctl <span class="built_in">enable</span> docker  <span class="comment">#开机自启</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">systemctl <span class="built_in">disable</span> docker <span class="comment">#开机自启</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">systemctl start docker   <span class="comment">#启动docker</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">systemctl restart docker <span class="comment">#重启</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">systemctl stop docker    <span class="comment">#重启</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">systemctl status docker  <span class="comment">#查看状态</span></span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ systemctl <span class="token builtin class-name">enable</span> <span class="token function">docker</span>  <span class="token comment">#开机自启</span>
+$ systemctl disable <span class="token function">docker</span> <span class="token comment">#开机自启</span>
+$ systemctl start <span class="token function">docker</span>   <span class="token comment">#启动docker</span>
+$ systemctl restart <span class="token function">docker</span> <span class="token comment">#重启</span>
+$ systemctl stop <span class="token function">docker</span>    <span class="token comment">#重启</span>
+$ systemctl status <span class="token function">docker</span>  <span class="token comment">#查看状态</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h4><p>docker 守护进程的配置，有两种方式指定：</p>
 <ul>
@@ -277,10 +318,20 @@
 <li>通过 dockerd  –config-file  来指定一个json 格式的配置文件 （默认在&#x2F;etc&#x2F;docker&#x2F;daemon.json）</li>
 </ul>
 <p>默认地，这个配置文件不存在，系统按照默认配置启动 docker ，如果想自定义，可以创建这个文件。下面是一个简单的示例：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;debug&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;tls&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;tlscert&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/var/docker/server.pem&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;tlskey&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/var/docker/serverkey.pem&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;hosts&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;tcp://192.168.59.3:2376&quot;</span><span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+  <span class="token property">"debug"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token property">"tls"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token property">"tlscert"</span><span class="token operator">:</span> <span class="token string">"/var/docker/server.pem"</span><span class="token punctuation">,</span>
+  <span class="token property">"tlskey"</span><span class="token operator">:</span> <span class="token string">"/var/docker/serverkey.pem"</span><span class="token punctuation">,</span>
+  <span class="token property">"hosts"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"tcp://192.168.59.3:2376"</span><span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>这个配置文件指定以调试模式启动，开启 TLS 安全传输协议，证书和密钥路径，并监听到 192.168.59.3:2376 。这与下面这个命令是一样的。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dockerd --debug \</span><br><span class="line">  --tls=true \</span><br><span class="line">  --tlscert=/var/docker/server.pem \</span><br><span class="line">  --tlskey=/var/docker/serverkey.pem \</span><br><span class="line">  --host tcp://192.168.59.3:2376</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">dockerd <span class="token parameter variable">--debug</span> <span class="token punctuation">\</span>
+  <span class="token parameter variable">--tls</span><span class="token operator">=</span>true <span class="token punctuation">\</span>
+  <span class="token parameter variable">--tlscert</span><span class="token operator">=</span>/var/docker/server.pem <span class="token punctuation">\</span>
+  <span class="token parameter variable">--tlskey</span><span class="token operator">=</span>/var/docker/serverkey.pem <span class="token punctuation">\</span>
+  <span class="token parameter variable">--host</span> tcp://192.168.59.3:2376<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>具体的配置选项可以参考 <a href="https://docs.docker.com/engine/reference/commandline/dockerd/">dockerd reference doc</a> 或者使用 dockerd –help来查看。</p>
 <h4 id="远程访问"><a href="#远程访问" class="headerlink" title="远程访问"></a>远程访问</h4><p>docker 守护进程使用 unix, tcp, fd 三种类型的 Socket 通信来监听 <a href="https://docs.docker.com/develop/sdk/">Docker Engine API</a> 。</p>
@@ -293,36 +344,125 @@
 <p>下面是一个简单的远程访问的例子：</p>
 <p>两台服务器，都安装好 docker ，192.168.1.2 作为服务端开启远程访问。</p>
 <p>服务端配置文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;hosts&quot;: [&quot;tcp://0.0.0.0:2375 &quot;,&quot;unix:///var/run/docker.sock&quot;,&quot;-H fd:// &quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#123;
+  &quot;hosts&quot;: [&quot;tcp:&#x2F;&#x2F;0.0.0.0:2375 &quot;,&quot;unix:&#x2F;&#x2F;&#x2F;var&#x2F;run&#x2F;docker.sock&quot;,&quot;-H fd:&#x2F;&#x2F; &quot;]
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>重新加载服务端配置文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">systemctl restart docker.service</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ systemctl restart docker.service<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>在客户端，有两种方式访问服务端的 docker 服务：</p>
 <ul>
 <li><p>通过 <a href="https://docs.docker.com/engine/api/v1.39/">docker engine web api</a> 连接 server ，访问服务端的 info 接口。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://192.168.1.2:2375/info </span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> http://192.168.1.2:2375/info <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>通过 docker 客户端命令访问服务端：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker -H tcp://192.168.1.2:2375 info</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> <span class="token parameter variable">-H</span> tcp://192.168.1.2:2375 info<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
 <p>默认地，在客户端执行 docker 命令是连接本地的守护进程，可以修改 DOCKER_HOST 环境变量来改变默认连接：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export DOCKER_HOST=&quot;tcp://192.168.1.2:2375&quot;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">DOCKER_HOST</span><span class="token operator">=</span><span class="token string">"tcp://192.168.1.2:2375"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>通过将 DOCKER_HOST 置空来恢复本地连接：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export DOCKER_HOST=&quot;&quot;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">DOCKER_HOST</span><span class="token operator">=</span><span class="token string">""</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 
 <h4 id="docker-命令"><a href="#docker-命令" class="headerlink" title="docker 命令"></a>docker 命令</h4><p>docker 命令主要是用来向服务端守护进程发送控制指令，来进行构建镜像，启动容器等一些列操作。它包括一系列子命令。每个子命令都有其单独的选项，查看 docker –help 来看命令概述，通过 docker COMMAND –help 来看子命令详细用法。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">root@fengzhao-linux-server:~# docker --help</span><br><span class="line"></span><br><span class="line">Usage:  docker [OPTIONS] COMMAND</span><br><span class="line"></span><br><span class="line">A self-sufficient runtime for containers</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">      --config string      Location of client config files (default &quot;/root/.docker&quot;)</span><br><span class="line">  -D, --debug              Enable debug mode</span><br><span class="line">  -H, --host list          Daemon socket(s) to connect to</span><br><span class="line">  -l, --log-level string   Set the logging level (&quot;debug&quot;|&quot;info&quot;|&quot;warn&quot;|&quot;error&quot;|&quot;fatal&quot;) (default &quot;info&quot;)</span><br><span class="line">      --tls                Use TLS; implied by --tlsverify</span><br><span class="line">      --tlscacert string   Trust certs signed only by this CA (default &quot;/root/.docker/ca.pem&quot;)</span><br><span class="line">      --tlscert string     Path to TLS certificate file (default &quot;/root/.docker/cert.pem&quot;)</span><br><span class="line">      --tlskey string      Path to TLS key file (default &quot;/root/.docker/key.pem&quot;)</span><br><span class="line">      --tlsverify          Use TLS and verify the remote</span><br><span class="line">  -v, --version            Print version information and quit</span><br><span class="line"></span><br><span class="line">Management Commands:</span><br><span class="line">  config      Manage Docker configs</span><br><span class="line">  container   Manage containers</span><br><span class="line">  image       Manage images</span><br><span class="line">  network     Manage networks</span><br><span class="line">  node        Manage Swarm nodes</span><br><span class="line">  plugin      Manage plugins</span><br><span class="line">  secret      Manage Docker secrets</span><br><span class="line">  service     Manage services</span><br><span class="line">  stack       Manage Docker stacks</span><br><span class="line">  swarm       Manage Swarm</span><br><span class="line">  system      Manage Docker</span><br><span class="line">  trust       Manage trust on Docker images</span><br><span class="line">  volume      Manage volumes</span><br><span class="line"></span><br><span class="line">Commands:</span><br><span class="line">  attach      Attach local standard input, output, and error streams to a running container</span><br><span class="line">  build       Build an image from a Dockerfile</span><br><span class="line">  commit      Create a new image from a container&#x27;s changes</span><br><span class="line">  cp          Copy files/folders between a container and the local filesystem</span><br><span class="line">  create      Create a new container</span><br><span class="line">  diff        Inspect changes to files or directories on a container&#x27;s filesystem</span><br><span class="line">  events      Get real time events from the server</span><br><span class="line">  exec        Run a command in a running container</span><br><span class="line">  export      Export a container&#x27;s filesystem as a tar archive</span><br><span class="line">  history     Show the history of an image</span><br><span class="line">  images      List images</span><br><span class="line">  import      Import the contents from a tarball to create a filesystem image</span><br><span class="line">  info        Display system-wide information</span><br><span class="line">  inspect     Return low-level information on Docker objects</span><br><span class="line">  kill        Kill one or more running containers</span><br><span class="line">  load        Load an image from a tar archive or STDIN</span><br><span class="line">  login       Log in to a Docker registry</span><br><span class="line">  logout      Log out from a Docker registry</span><br><span class="line">  logs        Fetch the logs of a container</span><br><span class="line">  pause       Pause all processes within one or more containers</span><br><span class="line">  port        List port mappings or a specific mapping for the container</span><br><span class="line">  ps          List containers</span><br><span class="line">  pull        Pull an image or a repository from a registry</span><br><span class="line">  push        Push an image or a repository to a registry</span><br><span class="line">  rename      Rename a container</span><br><span class="line">  restart     Restart one or more containers</span><br><span class="line">  rm          Remove one or more containers</span><br><span class="line">  rmi         Remove one or more images</span><br><span class="line">  run         Run a command in a new container</span><br><span class="line">  save        Save one or more images to a tar archive (streamed to STDOUT by default)</span><br><span class="line">  search      Search the Docker Hub for images</span><br><span class="line">  start       Start one or more stopped containers</span><br><span class="line">  stats       Display a live stream of container(s) resource usage statistics</span><br><span class="line">  stop        Stop one or more running containers</span><br><span class="line">  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE</span><br><span class="line">  top         Display the running processes of a container</span><br><span class="line">  unpause     Unpause all processes within one or more containers</span><br><span class="line">  update      Update configuration of one or more containers</span><br><span class="line">  version     Show the Docker version information</span><br><span class="line">  wait        Block until one or more containers stop, then print their exit codes</span><br><span class="line"></span><br><span class="line">Run &#x27;docker COMMAND --help&#x27; for more information on a command.</span><br><span class="line">root@fengzhao-linux-server:~#</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">root@fengzhao-linux-server:~<span class="token comment"># docker --help</span>
+
+Usage:  <span class="token function">docker</span> <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> COMMAND
+
+A self-sufficient runtime <span class="token keyword">for</span> containers
+
+Options:
+      <span class="token parameter variable">--config</span> string      Location of client config files <span class="token punctuation">(</span>default <span class="token string">"/root/.docker"</span><span class="token punctuation">)</span>
+  -D, <span class="token parameter variable">--debug</span>              Enable debug mode
+  -H, <span class="token parameter variable">--host</span> list          Daemon socket<span class="token punctuation">(</span>s<span class="token punctuation">)</span> to connect to
+  -l, --log-level string   Set the logging level <span class="token punctuation">(</span><span class="token string">"debug"</span><span class="token operator">|</span><span class="token string">"info"</span><span class="token operator">|</span><span class="token string">"warn"</span><span class="token operator">|</span><span class="token string">"error"</span><span class="token operator">|</span><span class="token string">"fatal"</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>default <span class="token string">"info"</span><span class="token punctuation">)</span>
+      <span class="token parameter variable">--tls</span>                Use TLS<span class="token punctuation">;</span> implied by <span class="token parameter variable">--tlsverify</span>
+      <span class="token parameter variable">--tlscacert</span> string   Trust certs signed only by this CA <span class="token punctuation">(</span>default <span class="token string">"/root/.docker/ca.pem"</span><span class="token punctuation">)</span>
+      <span class="token parameter variable">--tlscert</span> string     Path to TLS certificate <span class="token function">file</span> <span class="token punctuation">(</span>default <span class="token string">"/root/.docker/cert.pem"</span><span class="token punctuation">)</span>
+      <span class="token parameter variable">--tlskey</span> string      Path to TLS key <span class="token function">file</span> <span class="token punctuation">(</span>default <span class="token string">"/root/.docker/key.pem"</span><span class="token punctuation">)</span>
+      <span class="token parameter variable">--tlsverify</span>          Use TLS and verify the remote
+  -v, <span class="token parameter variable">--version</span>            Print version information and quit
+
+Management Commands:
+  config      Manage Docker configs
+  container   Manage containers
+  image       Manage images
+  network     Manage networks
+  <span class="token function">node</span>        Manage Swarm nodes
+  plugin      Manage plugins
+  secret      Manage Docker secrets
+  <span class="token function">service</span>     Manage services
+  stack       Manage Docker stacks
+  swarm       Manage Swarm
+  system      Manage Docker
+  trust       Manage trust on Docker images
+  volume      Manage volumes
+
+Commands:
+  attach      Attach <span class="token builtin class-name">local</span> standard input, output, and error streams to a running container
+  build       Build an image from a Dockerfile
+  commit      Create a new image from a container<span class="token string">'s changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  diff        Inspect changes to files or directories on a container'</span>s filesystem
+  events      Get real <span class="token function">time</span> events from the server
+  <span class="token builtin class-name">exec</span>        Run a <span class="token builtin class-name">command</span> <span class="token keyword">in</span> a running container
+  <span class="token builtin class-name">export</span>      Export a container<span class="token string">'s filesystem as a tar archive
+  history     Show the history of an image
+  images      List images
+  import      Import the contents from a tarball to create a filesystem image
+  info        Display system-wide information
+  inspect     Return low-level information on Docker objects
+  kill        Kill one or more running containers
+  load        Load an image from a tar archive or STDIN
+  login       Log in to a Docker registry
+  logout      Log out from a Docker registry
+  logs        Fetch the logs of a container
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  ps          List containers
+  pull        Pull an image or a repository from a registry
+  push        Push an image or a repository to a registry
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  rmi         Remove one or more images
+  run         Run a command in a new container
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  search      Search the Docker Hub for images
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  version     Show the Docker version information
+  wait        Block until one or more containers stop, then print their exit codes
+
+Run '</span><span class="token function">docker</span> COMMAND --help' <span class="token keyword">for</span> <span class="token function">more</span> information on a command.
+root@fengzhao-linux-server:~<span class="token comment">#</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
 
 
 <p>下面是一些常见的 docker 命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker --<span class="built_in">help</span>  <span class="comment">#查看帮助</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker version <span class="comment">#查看版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker pull image <span class="comment">#下载镜像</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker image <span class="built_in">ls</span> <span class="comment"># 列出所有镜像</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker run image <span class="comment">#从镜像启动一个新的容器</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker ps  <span class="comment">#查看运行中的容器，-a 查看所有容器</span></span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> <span class="token parameter variable">--help</span>  <span class="token comment">#查看帮助</span>
+$ <span class="token function">docker</span> version <span class="token comment">#查看版本</span>
+$ <span class="token function">docker</span> pull image <span class="token comment">#下载镜像</span>
+$ <span class="token function">docker</span> image <span class="token function">ls</span> <span class="token comment"># 列出所有镜像</span>
+$ <span class="token function">docker</span> run image <span class="token comment">#从镜像启动一个新的容器</span>
+$ <span class="token function">docker</span> <span class="token function">ps</span>  <span class="token comment">#查看运行中的容器，-a 查看所有容器</span>
+ 
+
+
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -344,22 +484,64 @@
 <li>私有 docker registry上的镜像   hub.mycompany.com&#x2F;dev&#x2F;nginx:latest</li>
 </ol>
 <p>列出所有镜像：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">root@fengzhao-linux-server:~# docker image ls</span><br><span class="line">root@fengzhao-linux-server:~# docker image ls</span><br><span class="line">REPOSITORY                       TAG        IMAGE ID         CREATED             SIZE</span><br><span class="line">nginx                           latest      62f816a209e6     2 months ago        109MB</span><br><span class="line">hub.demo.com/fengzhao/nginx     latest      62f816a209e6     2 months ago        109MB</span><br><span class="line">chinafengzhao/nginx             v1.0        62f816a209e6     2 months ago        109MB</span><br><span class="line">root@fengzhao-linux-server:~#</span><br><span class="line">root@fengzhao-linux-server:~#</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">这些，其实都是同一个镜像，只是不同的引用而已，因为他们</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">第一个是官方的nginx镜像，</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">第二个是给官方镜像打了新标签，可以通过 docker pull 推到自己本地的 docker Registry 中。</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">第三个是给官方镜像打了用户空间（并带版本号），可以推到 dockerhub 中的 chinafengzhao 用户空间下。</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">root@fengzhao-linux-server:~<span class="token comment"># docker image ls</span>
+root@fengzhao-linux-server:~<span class="token comment"># docker image ls</span>
+REPOSITORY                       TAG        IMAGE ID         CREATED             SIZE
+nginx                           latest      62f816a209e6     <span class="token number">2</span> months ago        109MB
+hub.demo.com/fengzhao/nginx     latest      62f816a209e6     <span class="token number">2</span> months ago        109MB
+chinafengzhao/nginx             v1.0        62f816a209e6     <span class="token number">2</span> months ago        109MB
+root@fengzhao-linux-server:~<span class="token comment">#</span>
+root@fengzhao-linux-server:~<span class="token comment">#</span>
+<span class="token comment"># 这些，其实都是同一个镜像，只是不同的引用而已，因为他们</span>
+<span class="token comment"># 第一个是官方的nginx镜像，</span>
+<span class="token comment"># 第二个是给官方镜像打了新标签，可以通过 docker pull 推到自己本地的 docker Registry 中。</span>
+<span class="token comment"># 第三个是给官方镜像打了用户空间（并带版本号），可以推到 dockerhub 中的 chinafengzhao 用户空间下。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
 <p>每个镜像，下载到当前服务器内，都有一个镜像 id来唯一标识这个镜像，我们可以给同一个镜像打多个标签，用来做镜像版本管理，使用 docker tag 命令来给镜像打标签：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG] <span class="comment">#给镜像打一个标签</span></span> </span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker  image <span class="built_in">rm</span> Registry/Users/Repository/Tag   <span class="comment">#移除某个标签，当最后一个时</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">当某个镜像的Registry/Users/Repository/Tag均为空时，无法引用这个镜像，成为虚悬镜像。</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">产生虚悬镜像的原因，从 Registry 拉取3.2版本的镜像，然后 Registry 重新制作3.2版本的镜像，然后你再＃拉这个镜像，这样最开始的那个3.2的镜像的REPOSITORY和TAG都被置空，无法引用</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker prune <span class="comment"># 删除虚悬镜像</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker image <span class="built_in">ls</span> -f dangling=<span class="literal">true</span> <span class="comment"># 列出所有虚悬镜像</span></span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> tag SOURCE_IMAGE<span class="token punctuation">[</span>:TAG<span class="token punctuation">]</span> TARGET_IMAGE<span class="token punctuation">[</span>:TAG<span class="token punctuation">]</span> <span class="token comment">#给镜像打一个标签 </span>
+$ <span class="token function">docker</span>  image <span class="token function">rm</span> Registry/Users/Repository/Tag   <span class="token comment">#移除某个标签，当最后一个时</span>
+<span class="token comment"># 当某个镜像的Registry/Users/Repository/Tag均为空时，无法引用这个镜像，成为虚悬镜像。</span>
+<span class="token comment"># 产生虚悬镜像的原因，从 Registry 拉取3.2版本的镜像，然后 Registry 重新制作3.2版本的镜像，然后你再＃拉这个镜像，这样最开始的那个3.2的镜像的REPOSITORY和TAG都被置空，无法引用</span>
+$ <span class="token function">docker</span> prune <span class="token comment"># 删除虚悬镜像</span>
+$ <span class="token function">docker</span> image <span class="token function">ls</span> <span class="token parameter variable">-f</span> <span class="token assign-left variable">dangling</span><span class="token operator">=</span>true <span class="token comment"># 列出所有虚悬镜像</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
 <h4 id="镜像管理常用命令"><a href="#镜像管理常用命令" class="headerlink" title="镜像管理常用命令"></a>镜像管理常用命令</h4><p>docker image COMMAND 是镜像管理的基本命令，可以通过帮助命令，逐层查看其所有的子命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">root@fengzhao-linux-server:~# docker image --help</span><br><span class="line"></span><br><span class="line">Usage:  docker image COMMAND</span><br><span class="line"></span><br><span class="line">Manage images</span><br><span class="line"></span><br><span class="line">Commands:</span><br><span class="line">  build       Build an image from a Dockerfile</span><br><span class="line">  history     Show the history of an image</span><br><span class="line">  import      Import the contents from a tarball to create a filesystem image</span><br><span class="line">  inspect     Display detailed information on one or more images</span><br><span class="line">  load        Load an image from a tar archive or STDIN</span><br><span class="line">  ls          List images</span><br><span class="line">  prune       Remove unused images</span><br><span class="line">  pull        Pull an image or a repository from a registry</span><br><span class="line">  push        Push an image or a repository to a registry</span><br><span class="line">  rm          Remove one or more images</span><br><span class="line">  save        Save one or more images to a tar archive (streamed to STDOUT by default)</span><br><span class="line">  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE</span><br><span class="line"></span><br><span class="line">Run &#x27;docker image COMMAND --help&#x27; for more information on a command.</span><br><span class="line">root@fengzhao-linux-server:~#</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">root@fengzhao-linux-server:~<span class="token comment"># docker image --help</span>
+
+Usage:  <span class="token function">docker</span> image COMMAND
+
+Manage images
+
+Commands:
+  build       Build an image from a Dockerfile
+  <span class="token function">history</span>     Show the <span class="token function">history</span> of an image
+  <span class="token function">import</span>      Import the contents from a tarball to create a filesystem image
+  inspect     Display detailed information on one or <span class="token function">more</span> images
+  load        Load an image from a <span class="token function">tar</span> archive or STDIN
+  <span class="token function">ls</span>          List images
+  prune       Remove unused images
+  pull        Pull an image or a repository from a registry
+  push        Push an image or a repository to a registry
+  <span class="token function">rm</span>          Remove one or <span class="token function">more</span> images
+  save        Save one or <span class="token function">more</span> images to a <span class="token function">tar</span> archive <span class="token punctuation">(</span>streamed to STDOUT by default<span class="token punctuation">)</span>
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+
+Run <span class="token string">'docker image COMMAND --help'</span> <span class="token keyword">for</span> <span class="token function">more</span> information on a command.
+root@fengzhao-linux-server:~<span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
 <p>下面仅列举一些常用的 docker 镜像管理命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker pull  Registry/Users/Repository/Tag <span class="comment"># 从registry上拉取镜像，私有的可能需要docker login认证</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker image <span class="built_in">ls</span> <span class="comment"># 列出所有镜像</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker rmi  45fb1e3aa  <span class="comment"># 删除这个id的镜像，参数可以是id，也可以是repoistry+tag，</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker tag busybox:latest  fengzhao/busybox:latest  <span class="comment"># 给镜像添加额外的标签</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker</span> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> pull  Registry/Users/Repository/Tag <span class="token comment"># 从registry上拉取镜像，私有的可能需要docker login认证</span>
+$ <span class="token function">docker</span> image <span class="token function">ls</span> <span class="token comment"># 列出所有镜像</span>
+$ <span class="token function">docker</span> rmi  45fb1e3aa  <span class="token comment"># 删除这个id的镜像，参数可以是id，也可以是repoistry+tag，</span>
+$ <span class="token function">docker</span> tag busybox:latest  fengzhao/busybox:latest  <span class="token comment"># 给镜像添加额外的标签</span>
+$ <span class="token function">docker</span> 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -371,13 +553,64 @@
 <p><code>警告</code>：不要使用根目录<code>/</code>作为上下文，因为它会导致构建将硬盘中的所有内容传输到Docker守护进程。</p>
 </blockquote>
 <p>下面是一个 nginx 的 Dockerfile 文件：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">/data/docker/nginx/Dockerfile</span></span><br><span class="line">FROM ubuntu:12.04</span><br><span class="line">MAINTAINER fengzhao &lt;fengzhao1124@hotmail.com&gt;</span><br><span class="line">RUN apt-get update</span><br><span class="line">RUN apt-get -y install nginx</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">put my <span class="built_in">local</span> site to /var/www</span></span><br><span class="line">ADD index.html /var/www/html/</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">expose httpd port</span></span><br><span class="line">EXPOSE 80</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">the <span class="built_in">command</span> to run</span></span><br><span class="line">CMD [&quot;/usr/sbin/nginx&quot;]</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># /data/docker/nginx/Dockerfile</span>
+FROM ubuntu:12.04
+MAINTAINER fengzhao <span class="token operator">&lt;</span>fengzhao1124@hotmail.com<span class="token operator">></span>
+RUN <span class="token function">apt-get</span> update
+RUN <span class="token function">apt-get</span> <span class="token parameter variable">-y</span> <span class="token function">install</span> nginx
+<span class="token comment"># put my local site to /var/www</span>
+ADD index.html /var/www/html/
+<span class="token comment"># expose httpd port</span>
+EXPOSE <span class="token number">80</span>
+<span class="token comment"># the command to run</span>
+CMD <span class="token punctuation">[</span><span class="token string">"/usr/sbin/nginx"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>通过 docker build 命令来构建镜像：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> /data/docker/nginx/</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker build -t chinafengzhao/nginx:1.0.2 -t shykes/myapp:latest .</span> </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">. 表示 Dockerfile 文件所在目录，当前构建的上下文。也可以用 -f /path/Dockerfile 来指定构建路径</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">cd</span> /data/docker/nginx/
+$ <span class="token function">docker</span> build <span class="token parameter variable">-t</span> chinafengzhao/nginx:1.0.2 <span class="token parameter variable">-t</span> shykes/myapp:latest <span class="token builtin class-name">.</span> 
+<span class="token comment"># . 表示 Dockerfile 文件所在目录，当前构建的上下文。也可以用 -f /path/Dockerfile 来指定构建路径</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>关于 docker build 命令的详细用法，可以查看帮助：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">root@fengzhao-linux-server:~#</span><br><span class="line">root@fengzhao-linux-server:~#</span><br><span class="line">root@fengzhao-linux-server:~# docker build --help</span><br><span class="line"></span><br><span class="line">Usage:  docker build [OPTIONS] PATH | URL | -</span><br><span class="line"></span><br><span class="line">Build an image from a Dockerfile</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">      --add-host list           Add a custom host-to-IP mapping (host:ip)</span><br><span class="line">      --build-arg list          Set build-time variables</span><br><span class="line">      --cache-from strings      Images to consider as cache sources</span><br><span class="line">      --cgroup-parent string    Optional parent cgroup for the container</span><br><span class="line">      --compress                Compress the build context using gzip</span><br><span class="line">      --cpu-period int          Limit the CPU CFS (Completely Fair Scheduler) period</span><br><span class="line">      --cpu-quota int           Limit the CPU CFS (Completely Fair Scheduler) quota</span><br><span class="line">  -c, --cpu-shares int          CPU shares (relative weight)</span><br><span class="line">      --cpuset-cpus string      CPUs in which to allow execution (0-3, 0,1)</span><br><span class="line">      --cpuset-mems string      MEMs in which to allow execution (0-3, 0,1)</span><br><span class="line">      --disable-content-trust   Skip image verification (default true)</span><br><span class="line">  -f, --file string             Name of the Dockerfile (Default is &#x27;PATH/Dockerfile&#x27;)</span><br><span class="line">      --force-rm                Always remove intermediate containers</span><br><span class="line">      --iidfile string          Write the image ID to the file</span><br><span class="line">      --isolation string        Container isolation technology</span><br><span class="line">      --label list              Set metadata for an image</span><br><span class="line">  -m, --memory bytes            Memory limit</span><br><span class="line">      --memory-swap bytes       Swap limit equal to memory plus swap: &#x27;-1&#x27; to enable unlimited swap</span><br><span class="line">      --network string          Set the networking mode for the RUN instructions during build (default &quot;default&quot;)</span><br><span class="line">      --no-cache                Do not use cache when building the image</span><br><span class="line">      --pull                    Always attempt to pull a newer version of the image</span><br><span class="line">  -q, --quiet                   Suppress the build output and print image ID on success</span><br><span class="line">      --rm                      Remove intermediate containers after a successful build (default true)</span><br><span class="line">      --security-opt strings    Security options</span><br><span class="line">      --shm-size bytes          Size of /dev/shm</span><br><span class="line">  -t, --tag list                Name and optionally a tag in the &#x27;name:tag&#x27; format</span><br><span class="line">      --target string           Set the target build stage to build.</span><br><span class="line">      --ulimit ulimit           Ulimit options (default [])</span><br><span class="line">root@fengzhao-linux-server:~#</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">
+root@fengzhao-linux-server:~<span class="token comment">#</span>
+root@fengzhao-linux-server:~<span class="token comment">#</span>
+root@fengzhao-linux-server:~<span class="token comment"># docker build --help</span>
+
+Usage:  <span class="token function">docker</span> build <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> <span class="token environment constant">PATH</span> <span class="token operator">|</span> URL <span class="token operator">|</span> -
+
+Build an image from a Dockerfile
+
+Options:
+      --add-host list           Add a custom host-to-IP mapping <span class="token punctuation">(</span>host:ip<span class="token punctuation">)</span>
+      --build-arg list          Set build-time variables
+      --cache-from strings      Images to consider as cache sources
+      --cgroup-parent string    Optional parent cgroup <span class="token keyword">for</span> the container
+      <span class="token parameter variable">--compress</span>                Compress the build context using <span class="token function">gzip</span>
+      --cpu-period int          Limit the CPU CFS <span class="token punctuation">(</span>Completely Fair Scheduler<span class="token punctuation">)</span> period
+      --cpu-quota int           Limit the CPU CFS <span class="token punctuation">(</span>Completely Fair Scheduler<span class="token punctuation">)</span> <span class="token function">quota</span>
+  -c, --cpu-shares int          CPU shares <span class="token punctuation">(</span>relative weight<span class="token punctuation">)</span>
+      --cpuset-cpus string      CPUs <span class="token keyword">in</span> <span class="token function">which</span> to allow execution <span class="token punctuation">(</span><span class="token number">0</span>-3, <span class="token number">0,1</span><span class="token punctuation">)</span>
+      --cpuset-mems string      MEMs <span class="token keyword">in</span> <span class="token function">which</span> to allow execution <span class="token punctuation">(</span><span class="token number">0</span>-3, <span class="token number">0,1</span><span class="token punctuation">)</span>
+      --disable-content-trust   Skip image verification <span class="token punctuation">(</span>default <span class="token boolean">true</span><span class="token punctuation">)</span>
+  -f, <span class="token parameter variable">--file</span> string             Name of the Dockerfile <span class="token punctuation">(</span>Default is <span class="token string">'PATH/Dockerfile'</span><span class="token punctuation">)</span>
+      --force-rm                Always remove intermediate containers
+      <span class="token parameter variable">--iidfile</span> string          Write the image ID to the <span class="token function">file</span>
+      <span class="token parameter variable">--isolation</span> string        Container isolation technology
+      <span class="token parameter variable">--label</span> list              Set metadata <span class="token keyword">for</span> an image
+  -m, <span class="token parameter variable">--memory</span> bytes            Memory limit
+      --memory-swap bytes       Swap limit equal to memory plus swap: <span class="token string">'-1'</span> to <span class="token builtin class-name">enable</span> unlimited swap
+      <span class="token parameter variable">--network</span> string          Set the networking mode <span class="token keyword">for</span> the RUN instructions during build <span class="token punctuation">(</span>default <span class="token string">"default"</span><span class="token punctuation">)</span>
+      --no-cache                Do not use cache when building the image
+      <span class="token parameter variable">--pull</span>                    Always attempt to pull a newer version of the image
+  -q, <span class="token parameter variable">--quiet</span>                   Suppress the build output and print image ID on success
+      <span class="token parameter variable">--rm</span>                      Remove intermediate containers after a successful build <span class="token punctuation">(</span>default <span class="token boolean">true</span><span class="token punctuation">)</span>
+      --security-opt strings    Security options
+      --shm-size bytes          Size of /dev/shm
+  -t, <span class="token parameter variable">--tag</span> list                Name and optionally a tag <span class="token keyword">in</span> the <span class="token string">'name:tag'</span> <span class="token function">format</span>
+      <span class="token parameter variable">--target</span> string           Set the target build stage to build.
+      <span class="token parameter variable">--ulimit</span> <span class="token builtin class-name">ulimit</span>           Ulimit options <span class="token punctuation">(</span>default <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+root@fengzhao-linux-server:~<span class="token comment">#</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -404,7 +637,7 @@
       <a href="https://fengzhao.me/2019/01/03/2019-01-03-docker%E5%85%A5%E9%97%A8%E6%A6%82%E8%BF%B0/" title="docker入门概述">https://fengzhao.me/2019/01/03/2019-01-03-docker入门概述/</a>
   </li>
   <li class="post-copyright-license">
-      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
   </li>
 </ul>
 </div>
@@ -462,22 +695,24 @@
     <span>0%</span>
   </div>
 
-  <a href="https://github.com/fengzhao" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
-
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
 </noscript>
 
 
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script size="300" alpha="0.6" zIndex="-1" src="https://unpkg.zhimg.com/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/animejs/3.2.0/anime.min.js"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
-  
+  <script src="https://unpkg.zhimg.com/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 
 
+
+  <script src="/js/third-party/pace.js"></script>
 
 
   
