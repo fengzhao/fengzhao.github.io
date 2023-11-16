@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://fengzhao.me/about/index.html</loc>
+    
+    <lastmod>2023-11-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://fengzhao.me/2022/08/22/2022-08-22-%E4%B8%80%E4%BA%9B%E7%BB%84%E7%BD%91%E5%B8%B8%E8%AF%86%E5%92%8C%E6%96%B9%E6%B3%95/</loc>
     
     <lastmod>2023-10-17</lastmod>
@@ -65,15 +74,6 @@
   </url>
   
   <url>
-    <loc>https://fengzhao.me/about/index.html</loc>
-    
-    <lastmod>2018-06-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://fengzhao.me/tags/index.html</loc>
     
     <lastmod>2018-05-08</lastmod>
@@ -94,7 +94,7 @@
 
   <url>
     <loc>https://fengzhao.me/</loc>
-    <lastmod>2023-10-26</lastmod>
+    <lastmod>2023-11-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -102,35 +102,35 @@
   
   <url>
     <loc>https://fengzhao.me/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
-    <lastmod>2023-10-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://fengzhao.me/tags/docker/</loc>
-    <lastmod>2023-10-26</lastmod>
+    <lastmod>2023-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://fengzhao.me/tags/mysql/</loc>
-    <lastmod>2023-10-26</lastmod>
+    <lastmod>2023-11-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://fengzhao.me/tags/docker/</loc>
+    <lastmod>2023-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://fengzhao.me/tags/https/</loc>
-    <lastmod>2023-10-26</lastmod>
+    <lastmod>2023-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://fengzhao.me/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
-    <lastmod>2023-10-26</lastmod>
+    <lastmod>2023-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
